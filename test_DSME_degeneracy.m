@@ -8,7 +8,7 @@
     % CC-BY-SA
 
 %% Parameters
-    func = @test_function_1;
+    func = @test_function_3;
     init_conditions = [-0.75,0.35];
     limits = [-1,1;-1,1];
     Nsteps_max = 30;
