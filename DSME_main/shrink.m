@@ -7,7 +7,7 @@ function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-3; % Dimension
+    N = size(SimplexState,2)-6; % Dimension
 
 %% Initialization 
     % --- points
@@ -18,7 +18,10 @@ function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
     % --- Build shrink points
     ps = p1 + sigm*(ppi-p1);
     % --- Evaluation
-    costs = func(ps);
+    costs = nan(N,1);
+    for p=1:N
+        costs(p) = func(ps(p,:));
+    end
 
 %% Update PD
     Np = size(PD,1); IDs = Np+(1:N)'; % Shink point IDs
@@ -26,8 +29,13 @@ function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
 
 %% Update simplex state
     c=4; % Default value
+    
     % --- SimplexState update
+    %WTY: All SimplexState is updated
     SimplexState(2:(N+1)) = IDs; % p2,...,pN+1 <- ps
-    SimplexState(end-1) = SimplexState(end-1)+1; % Simplex number
-    SimplexState(end) = c; % Operation
+    SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+    SimplexState(N+3) = c; % Operation
+    SimplexState(N+4) = SimplexState(N+4)+1;%Counter
+    SimplexState(N+5) = SimplexState(N+5);%Counter
+    SimplexState(N+6) = SimplexState(N+6);%Counter
     SimplexState = simplexsort(SimplexState,PD); % Sort

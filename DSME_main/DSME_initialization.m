@@ -27,5 +27,7 @@ function [SH,PD] = DSME_initialization(init_conditions,init_coeff,limits,func)
     PD(1:(N+1),:) = [p1_N_plus_one,(1:(N+1))',cost1_N_plus_one,zeros(N+1,2)];
     
     % --- Initialize SH = SimplexHistory
-    % p1 | ... | pN+1 | Simplex numb. | Operation
-    SH = [SimplexPointIndicesSorted',0,0];
+    % p1 | ... | pN+1 | Simplex numb. | Operation | C1 | ... | CN+1
+    % C1， ...， CN+1 is the counter of how many times a point maintains
+    
+    SH = [SimplexPointIndicesSorted',0,0,ones(1, N+1)];

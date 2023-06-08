@@ -8,7 +8,7 @@ function SimplexState = simplexsort(SimplexState,PD)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-3; % Dimension
+    N = size(SimplexState,2)-6; % Dimension
     
 %%  Sort
     % --- Simplex costs

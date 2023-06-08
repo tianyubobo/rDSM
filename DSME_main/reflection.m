@@ -7,11 +7,14 @@ function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-3; % Dimension
+    N = size(SimplexState,2)-6; % Dimension
 
 %% Initialization 
     % --- Centroid
-    centroid = mean(PD(SimplexState(1:N),1:N),1);
+    %centroid = mean(PD(SimplexState(1:N),1:N),1);
+    
+    %id = id(1:N);
+    centroid = mean(PD(SimplexState(1:N),1:N),1);%WTY:
     % --- Points
     pN_plus_one = PD(SimplexState(N+1),1:N);
     % --- Costs
@@ -31,7 +34,7 @@ function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
 
 %% Update PD
     Np = size(PD,1); IDr = Np+1; % Reflection point ID
-    PD = [PD;pr,IDr,costr,SimplexState(end-1),1];
+    PD = [PD;pr,IDr,costr,SimplexState(N+2),1];
 
 %% Stopping criterion
     c=0; % Default value
@@ -40,8 +43,13 @@ function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
         % --- Operation
         c=1;
         % --- SimplexState update
+        %WTY: All SimplexState is updated
         SimplexState(N+1) = IDr; % pN+1 <- pr
-        SimplexState(end-1) = SimplexState(end-1)+1; % Simplex number
-        SimplexState(end) = c; % Operation
+        SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+        SimplexState(N+3) = c; % Operation
+        SimplexState(N+4) = SimplexState(N+4);%Counter
+        SimplexState(N+5) = SimplexState(N+5)+1;%Counter
+        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         SimplexState = simplexsort(SimplexState,PD);
+        
     end

@@ -7,7 +7,7 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-3; % Dimension
+    N = size(SimplexState,2)-6; % Dimension
 
 %% Initialization 
     % --- Centroid
@@ -41,16 +41,23 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
         c=2;
         % --- SimplexState update
         SimplexState(N+1) = IDe; % pN+1 <- pr
-        SimplexState(end-1) = SimplexState(end-1)+1; % Simplex number
-        SimplexState(end) = c; % Operation
+        SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+        SimplexState(N+3) = c; % Operation
+        SimplexState(N+4) = SimplexState(N+4);%Counter
+        SimplexState(N+5) = SimplexState(N+5)+1;%Counter
+        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         SimplexState = simplexsort(SimplexState,PD); % Sort
         else % --- Only reflection
         % --- Operation
         c=1;
         % --- SimplexState update
+        %WTY: All SimplexState is updated
         SimplexState(N+1) = IDr; % pN+1 <- pe
-        SimplexState(end-1) = SimplexState(end-1)+1; % Simplex number
-        SimplexState(end) = c; % Operation
+        SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+        SimplexState(N+3) = c; % Operation
+        SimplexState(N+4) = SimplexState(N+4);%Counter
+        SimplexState(N+5) = SimplexState(N+5)+1;%Counter
+        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end
     end
