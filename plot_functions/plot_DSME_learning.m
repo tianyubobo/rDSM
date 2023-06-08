@@ -1,5 +1,5 @@
 function plot_DSME_learning(PointsDatabase)
-    % This function plots thelearning process for a DSME optimization.
+    % This function plots the learning process for a DSME optimization.
         
     % Guy Y. Cornejo Maceda, 2023/05/10
 

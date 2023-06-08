@@ -7,12 +7,12 @@ function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-6; % Dimension
+    N = size(PD,2)-4; % Dimension
 
 %% Initialization 
     % --- points
-    p1 = PD(1,1:N);
-    ppi = PD(SimplexState(2:(N+1)),1:N);
+    p1 = PD(SimplexState(1),1:N); % Best point of the simplex
+    ppi = PD(SimplexState(2:(N+1)),1:N); % Other points in the simplex
 
 %% Shrink
     % --- Build shrink points
@@ -31,11 +31,14 @@ function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
     c=4; % Default value
     
     % --- SimplexState update
-    %WTY: All SimplexState is updated
     SimplexState(2:(N+1)) = IDs; % p2,...,pN+1 <- ps
     SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
     SimplexState(N+3) = c; % Operation
-    SimplexState(N+4) = SimplexState(N+4)+1;%Counter
-    SimplexState(N+5) = SimplexState(N+5);%Counter
-    SimplexState(N+6) = SimplexState(N+6);%Counter
+    % --- Update counters - WTY: All SimplexState is updated
+    SimplexState(N+4) = SimplexState(N+4)+1; % Counter of p1
+    SimplexState(N+5:end) = 1; % Counters from p2 to pN+1
+%     SimplexState(N+4) = SimplexState(N+4)+1;%Counter
+%     SimplexState(N+5) = SimplexState(N+5);%Counter
+%     SimplexState(N+6) = SimplexState(N+6);%Counter
+    % --- Sort simplex state
     SimplexState = simplexsort(SimplexState,PD); % Sort

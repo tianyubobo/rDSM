@@ -26,7 +26,7 @@ function plot_2D_Simplex(SimplexHistory,PointsDatabase,Step)
     MS = 60; % Marker size
 
 %% Parameters
-    N = size(SimplexHistory,2)-6; % Dimension
+    N = size(PointsDatabase,2)-4; % Dimension
 
 %% Plot the simplex
 hold on
@@ -58,9 +58,6 @@ hold off
     xticklabels('')
     yticklabels('')
     set(gca,'DataAspectRatio',[1,1,1])
-    set(gca,'TickDir','in')
-    %set(gca,'TickDir','none')
-%     set(gca,'color','none')
     axis off
 
 %% Text
@@ -79,6 +76,6 @@ hold off
                                      sprintf('Degenerated: volume ratio = %0.1f',volume_ratio)},...
             "HorizontalAlignment","center")
         otherwise
-%         text(center(1)+dX,center(2)+dX,sprintf('Simplex after %i iterations',Step),...
-%             "HorizontalAlignment","center")
+        text(center(1),center(2)+dX,sprintf('Simplex after %i iterations',Step),...
+            "HorizontalAlignment","center")
     end

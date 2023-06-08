@@ -1,4 +1,4 @@
-function plot_2D_Simplex(SimplexHistory,PointsDatabase,Step)
+function plot_2D_DSME_WTY(SimplexHistory,PointsDatabase,Step)
     % This function plots the last simplex
     % This is used to visualize the optimization process of DSME.
         
@@ -26,7 +26,7 @@ function plot_2D_Simplex(SimplexHistory,PointsDatabase,Step)
     MS = 60; % Marker size
 
 %% Parameters
-    N = size(SimplexHistory,2)-6; % Dimension
+    N = size(PointsDatabase,2)-4; % Dimension
 
 %% Plot the simplex
 hold on

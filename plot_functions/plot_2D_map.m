@@ -34,8 +34,8 @@ imagesc(limits(1,:),limits(2,:),val);
 set(gca,'YDir','normal')
 
 % --- Tick and labels
-xlabel('$x$','Interpreter','latex')
-ylabel('$y$','Interpreter','latex')
+xlabel('$p_1$','Interpreter','latex')
+ylabel('$p_2$','Interpreter','latex')
 xticks();
 yticks();
 xticklabels('')

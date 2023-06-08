@@ -7,7 +7,7 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-6; % Dimension
+    N = size(PD,2)-4; % Dimension
 
 %% Initialization 
     % --- Centroid
@@ -43,9 +43,13 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
         SimplexState(N+1) = IDe; % pN+1 <- pr
         SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
         SimplexState(N+3) = c; % Operation
-        SimplexState(N+4) = SimplexState(N+4);%Counter
-        SimplexState(N+5) = SimplexState(N+5)+1;%Counter
-        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
+        % --- Update counters - WTY: All SimplexState is updated
+        SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
+        SimplexState(end) = 1; % Counter of pN+1
+%         SimplexState(N+4) = SimplexState(N+4);%Counter
+%         SimplexState(N+5) = SimplexState(N+5)+1;%Counter
+%         SimplexState(N+6) = SimplexState(N+6)+1;%Counter
+        % --- Sort simplex state
         SimplexState = simplexsort(SimplexState,PD); % Sort
         else % --- Only reflection
         % --- Operation
@@ -55,9 +59,13 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
         SimplexState(N+1) = IDr; % pN+1 <- pe
         SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
         SimplexState(N+3) = c; % Operation
-        SimplexState(N+4) = SimplexState(N+4);%Counter
-        SimplexState(N+5) = SimplexState(N+5)+1;%Counter
-        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
+        % --- Update counters - WTY: All SimplexState is updated
+        SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
+        SimplexState(end) = 1; % Counter of pN+1
+%         SimplexState(N+4) = SimplexState(N+4);%Counter
+%         SimplexState(N+5) = SimplexState(N+5)+1;%Counter
+%         SimplexState(N+6) = SimplexState(N+6)+1;%Counter
+        % --- Sort simplex state
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end
     end

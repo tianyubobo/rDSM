@@ -8,13 +8,17 @@ function SimplexState = simplexsort(SimplexState,PD)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-6; % Dimension
+    N = size(PD,2)-4; % Dimension
     
 %%  Sort
     % --- Simplex costs
     SimplexCosts = PD(SimplexState(1:N+1),N+2);
     % --- Sort
     [~,SimplexPointIndicesSorted] = sort(SimplexCosts);
-    % --- Update
+    % --- Update indices
     SimplexIndices = SimplexState(1:N+1);
     SimplexState(1:N+1) = SimplexIndices(SimplexPointIndicesSorted);
+    % --- Update counters
+    SimplexCounters = SimplexState(end-N:end);
+    SimplexState(end-N:end) = SimplexCounters(SimplexPointIndicesSorted);
+    

@@ -7,7 +7,7 @@ function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-6; % Dimension
+    N = size(PD,2)-4; % Dimension
 
 %% Initialization 
     % --- Centroid
@@ -33,8 +33,10 @@ function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
     
 
 %% Update PD
+    %  p_1 | ... | p_N | ID | Cost | in Simplex numb. | Operation
     Np = size(PD,1); IDr = Np+1; % Reflection point ID
-    PD = [PD;pr,IDr,costr,SimplexState(N+2),1];
+    PD = [PD;...
+          pr,IDr,costr,SimplexState(N+2),1];
 
 %% Stopping criterion
     c=0; % Default value
@@ -43,13 +45,15 @@ function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
         % --- Operation
         c=1;
         % --- SimplexState update
-        %WTY: All SimplexState is updated
         SimplexState(N+1) = IDr; % pN+1 <- pr
         SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
         SimplexState(N+3) = c; % Operation
-        SimplexState(N+4) = SimplexState(N+4);%Counter
-        SimplexState(N+5) = SimplexState(N+5)+1;%Counter
-        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
+        % --- Update counters - WTY: All SimplexState is updated
+        SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
+        SimplexState(end) = 1; % Counter of pN+1
+%         SimplexState(N+4) = SimplexState(N+4); % Counter
+%         SimplexState(N+5) = SimplexState(N+5)+1; % Counter
+%         SimplexState(N+6) = SimplexState(N+6)+1; % Counter
+        % --- Sort simplex state
         SimplexState = simplexsort(SimplexState,PD);
-        
     end

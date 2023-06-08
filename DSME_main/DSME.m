@@ -1,4 +1,4 @@
-function [SH,PD] = DSME(init_conditions,limits,func,Nsteps_max)
+function [PSOL,SH,PD] = DSME(init_conditions,limits,func,Nsteps_max)
     % This function is the main one for the DSME algorithm
     % Note that when a point goes outside the domain, no evaluation is
     % performed and an infinite cost is automatically associated to this
@@ -22,7 +22,7 @@ function [SH,PD] = DSME(init_conditions,limits,func,Nsteps_max)
 %% DSME optimization
     % --- Initialization of the simplex state
     SimplexState = SH;
-    N = size(SimplexState,2)-6; % Dimension
+    N = size(PD,2)-4; % Dimension
     % --- Loop
     for p=1:Nsteps_max
         % --- 1-Reflexion
@@ -40,34 +40,40 @@ function [SH,PD] = DSME(init_conditions,limits,func,Nsteps_max)
                 end
             end
         end
-        %Reevaluate from WTY
-        count = SimplexState(N+4:end);
-        k = find(count >= 1.5*N);
-        if k
-            for i = 1:size(k,1) 
-
-                p_r = PD(count(i),1:N);
-                cost_r = func(p_r);%Reevaluate
-                %update PD
-                Np = size(PD,1); ID_r = Np+1;
-                PD = [PD;p_r,ID_r,cost_r,SimplexState(N+2),1];
-                SimplexState(N+3+k) = 1;%Counter
-                
+        % --- Reevaluation from WTY
+            counters = SimplexState(N+4:end);
+            too_long_in_simplex = (counters >= 1.5*N);
+            for k=1:N+1
+                if too_long_in_simplex(k)
+                    % --- Reevaluation
+                    pk = PD(SimplexState(k),1:N); % Select pk to reevaluate
+                    costk = func(pk); % Reevaluate
+                    % --- Update PD
+                    Np = size(PD,1); IDk = Np+1;
+                    PD = [PD;pk,IDk,costk,SimplexState(N+2),-1]; % -1 for reevaluation
+                    % --- Update simplex state
+                    SimplexState(k) = IDk;
+                    SimplexState(N+3+k) = 1;% Reinitilize counter
+                end
             end
-        end
-        %End reevaluate from WTY
-%         % --- Degeneracy test
-%         c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
-%         SimplexState(end) = SimplexState(end)+c;
-         % --- Update simplex history
-         SH = [SH;SimplexState];
-         % --- Restart simplex
-         if c
-             [SimplexState,PD] = restart_simplex(SimplexState,PD,func);
-             % --- Update simplex history
-             SH = [SH;SimplexState];
-         end
+        % --- Sort simplex state
+            SimplexState = simplexsort(SimplexState,PD);
+
+        % --- Degeneracy test
+            c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
+            SimplexState(end) = SimplexState(end)+c;
+
+        % --- Update simplex history
+            SH = [SH;SimplexState];
+
+        % --- Restart simplex
+%          if c
+%              [SimplexState,PD] = restart_simplex(SimplexState,PD,func);
+%              % --- Update simplex history
+%              SH = [SH;SimplexState];
+%          end
      end
     
-
+%% Solution
+    PSOL = PD(SH(end,1),1:end-4);
 end
