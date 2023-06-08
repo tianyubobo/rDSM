@@ -8,7 +8,7 @@ function [SimplexState,PD,c,IDr] = contraction(SimplexState,PD,func,phi,IDr)
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-3; % Dimension
+    N = size(SimplexState,2)-6; % Dimension
 
 %% Initialization 
     % --- Centroid
@@ -39,8 +39,11 @@ function [SimplexState,PD,c,IDr] = contraction(SimplexState,PD,func,phi,IDr)
         c=31;
         % --- SimplexState update
         SimplexState(N+1) = IDc1; % pN+1 <- pc1
-        SimplexState(end-1) = SimplexState(end-1)+1; % Simplex number
-        SimplexState(end) = c; % Operation
+        SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+        SimplexState(N+3) = c; % Operation
+        SimplexState(N+4) = SimplexState(N+4)+1;%Counter
+        SimplexState(N+5) = SimplexState(N+5);%Counter
+        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end
     else % ---- Inside contraction
@@ -53,9 +56,13 @@ function [SimplexState,PD,c,IDr] = contraction(SimplexState,PD,func,phi,IDr)
         % --- Operation
         c=32;
         % --- SimplexState update
+        %WTY: All SimplexState is updated
         SimplexState(N+1) = IDc2; % pN+1 <- pc2
-        SimplexState(end-1) = SimplexState(end-1)+1; % Simplex number
-        SimplexState(end) = c; % Operation
+        SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+        SimplexState(N+3) = c; % Operation
+        SimplexState(N+4) = SimplexState(N+4)+1;%Counter
+        SimplexState(N+5) = SimplexState(N+5);%Counter
+        SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end
     end
