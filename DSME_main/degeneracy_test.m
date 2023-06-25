@@ -8,7 +8,7 @@ function [c,edge_ratio,volume_ratio] = degeneracy_test(SimplexState,PD,eps_edge,
     % CC-BY-SA
 
 %% Parameters
-    N = size(SimplexState,2)-6; % Dimension
+    N = size(PD,2)-4; % Dimension
 
 %% Degeneracy test
     % *** The degeneracy of the simplex is characerized.

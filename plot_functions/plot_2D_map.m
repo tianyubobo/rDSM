@@ -51,4 +51,6 @@ axis tight
 grid off
 box on
 set(gca,'DataAspectRatio',[1,1,1])
-set(gca,'TickDir','none')
+%set(gca,'TickDir','none')%WTY: none is not available, use
+%'in'|'out'|'both'instead
+set(gca,'TickDir','out')
