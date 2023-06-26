@@ -8,14 +8,14 @@
     % CC-BY-SA
 
 %% Parameters
-func = @test_function_2;
-init_conditions = [-0.75,0.35];
-limits = [-1,1;-1,1];
-Nsteps_max = 30;
+    func = @test_function_3;
+    init_conditions = [-0.75,0.35];
+    limits = [-1,1;-1,1];
+    Nsteps_max = 30;
 
 %% Optimization process
 %[p_sol,SimplexHistory,PointsDatabase] = DSME(init_conditions,limits,func,Nsteps_max);
-[SimplexHistory,PointsDatabase] = DSME(init_conditions,limits,func,Nsteps_max);%WTY:function DSME only have two returns
+[sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);%WTY:function DSME only have two returns
 %% Plot solution - 2D
 figure
 subplot(1,3,1)
@@ -31,7 +31,7 @@ plot_2D_Simplex(SimplexHistory,PointsDatabase)
 set(gcf,'Position',[20,521,1845,420])
 
 %% Interesting cases:
-% (1) func = @test_function_2;
+% (1) func = @test_function_2; 
 %     init_conditions = [-0.75,-0.65];
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
