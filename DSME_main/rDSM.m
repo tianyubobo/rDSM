@@ -66,7 +66,7 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
         c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
         if c % ### Guy to Tianyu: it's enough, no need "== 0.25 || c ==0.75 || c == 0.5"
             % --- Correction of the degenerated simplex
-            [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c);
+            [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,limits);
 %             % --- Restart simplex (literature solution) We need to compare the two solutions.
 %             [SimplexState,PD] = restart_simplex(SimplexState,PD,func);
             % --- Update simplex history
