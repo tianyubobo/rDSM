@@ -1,4 +1,4 @@
-function plot_DSME_learning(PointsDatabase)
+function plot_rDSM_learning(PointsDatabase)
     % This function plots the learning process for a DSME optimization.
         
     % Guy Y. Cornejo Maceda, 2023/05/10
@@ -22,7 +22,7 @@ function plot_DSME_learning(PointsDatabase)
 scatter(1:NEval,PointsDatabase(:,N+2),MS,"yellow","filled","o","MarkerEdgeColor","black")
 ylim([0,1.2*max_cost])
 
-xlabel('# Evaluations')
+xlabel('\# Evaluations')
 ylabel('Cost')
 
 % --- Cosmetic and shape

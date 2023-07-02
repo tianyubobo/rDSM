@@ -15,7 +15,7 @@
     Nsteps_max = 30;
 
 %% Optimization process
-[p_sol,SimplexHistory,PointsDatabase] = DSME(init_conditions,limits,func,Nsteps_max);
+[p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
 
 %% Plot solution - 2D
 figure
@@ -23,9 +23,9 @@ subplot(1,3,1)
 % --- Plot background
  plot_3D_map(limits,func);
 % --- Plot DSME learning process
-plot_2D_DSME(SimplexHistory,PointsDatabase)
+plot_2D_rDSM(SimplexHistory,PointsDatabase)
 subplot(1,3,2)
-plot_DSME_learning(PointsDatabase)
+plot_rDSM_learning(PointsDatabase)
 subplot(1,3,3)
 % plot_2D_Simplex(SimplexHistory,PointsDatabase)
 % --- Position

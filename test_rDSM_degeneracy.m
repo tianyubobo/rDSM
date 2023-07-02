@@ -8,30 +8,39 @@
     % CC-BY-SA
 
 %% Parameters
-func = @test_function_2;
-init_conditions = [-0.75,0.35];
-limits = [-1,1;-1,1];
-Nsteps_max = 30;
+%     func = @test_function_2; 
+%     init_conditions = [-0.75,-0.65];
+%     limits = [-1,1;-1,1];
+%     Nsteps_max = 30;
 
-%% 3D Test
-%func = @test_function_5;
-%init_conditions = [-0.75,0.35,0.9];
-%limits = [-1,1;-1,1;-1,1];
-%Nsteps_max = 20;
+% 
+%     func = @test_function_3;
+%     init_conditions = [-0.75,0.35];
+%     limits = [-1,1;-1,1];
+%     Nsteps_max = 30;
+
+% --- 3D Test
+func = @test_function_5;
+init_conditions = [-0.75,0.35,0.9];
+limits = [-1,1;-1,1;-1,1];
+Nsteps_max = 20;
 %% Optimization process
 [sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
-%% Plot solution - 2D
-figure
-subplot(1,3,1)
-% --- Plot background
-plot_2D_map(limits,func);
-%plot_3D_map(limits,func);%WTY: For 3D plot
-% --- Plot DSME learning process
-plot_2D_DSME(SimplexHistory,PointsDatabase)
-subplot(1,3,2)
-plot_DSME_learning(PointsDatabase)
-subplot(1,3,3)
-plot_2D_Simplex(SimplexHistory,PointsDatabase)
+
+%% Plot solution
+    figure
+    subplot(1,3,1)
+    % --- Plot background and simplices history
+        plot_func_map(limits,func);
+        plot_rDSM_simplices(SimplexHistory,PointsDatabase)
+    subplot(1,3,2)
+    % --- Plot learning curve
+        plot_rDSM_learning(PointsDatabase)
+    subplot(1,3,3)
+        plot_simplex(SimplexHistory,PointsDatabase)
+    % --- Position
+    set(gcf,'Position',[20,521,1845,420])
+    
 % --- Position
 set(gcf,'Position',[20,521,1845,420])
 

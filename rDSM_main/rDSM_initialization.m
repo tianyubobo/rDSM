@@ -1,4 +1,4 @@
-function [SH,PD] = rDSM_initialization(init_conditions,init_coeff,limits,func)
+function [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func)
     % This function initialize the simplex history (SH) and points database
     % (PD) for the DSME algorithm.
 

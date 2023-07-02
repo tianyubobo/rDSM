@@ -7,31 +7,31 @@
     % CC-BY-SA
 
 %% Parameters
-    func = @test_function_5;
-    init_conditions = [-0.75,0.35,0.9];
-    limits = [-1,1;-1,1;-1,1];
+    func = @test_function_3;
+    init_conditions = [-0.75,0.35];
+    limits = [-1,1;-1,1];
     Nsteps_max = 30;
 
 %% Optimization process
     [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
 
-%% Plot solution - 2D
+%% Plot solution
     figure
     subplot(1,3,1)
-    % --- Plot background
-    plot_3D_map(limits,func);
-    % --- Plot DSME learning process
-    plot_2D_DSME(SimplexHistory,PointsDatabase)
+    % --- Plot background and simplices history
+        plot_func_map(limits,func);
+        plot_rDSM_simplices(SimplexHistory,PointsDatabase)
     subplot(1,3,2)
-    plot_DSME_learning(PointsDatabase)
+    % --- Plot learning curve
+        plot_rDSM_learning(PointsDatabase)
     subplot(1,3,3)
-%     plot_2D_Simplex(SimplexHistory,PointsDatabase)
+        plot_simplex(SimplexHistory,PointsDatabase)
     % --- Position
     set(gcf,'Position',[20,521,1845,420])
 
 %% Compare with fminsearch
-    options = optimset('PlotFcns',@optimplotfval,'MaxIter',Nsteps_max);
-    fminsearch_sol = fminsearch(func,init_conditions,options);
+%     options = optimset('PlotFcns',@optimplotfval,'MaxIter',Nsteps_max);
+%     fminsearch_sol = fminsearch(func,init_conditions,options);
 
 %% Print solution
     fprintf('DSM solution after %i iterations: \n', Nsteps_max)
@@ -45,6 +45,12 @@
 %     init_conditions = [-0.75,0.35];
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
+% 
+%     func = @test_function_3;
+%     init_conditions = [-0.75,0.35];
+%     limits = [-1,1;-1,1];
+%     Nsteps_max = 30;
+% 
     % --- 3D
 %     func = @test_function_5;
 %     init_conditions = [-0.75,0.35,0.35];

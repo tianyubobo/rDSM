@@ -1,4 +1,4 @@
-function plot_2D_DSME_WTY(SimplexHistory,PointsDatabase,Step)
+function plot_2D_rDSM_WTY(SimplexHistory,PointsDatabase,Step)
     % This function plots the last simplex
     % This is used to visualize the optimization process of DSME.
         

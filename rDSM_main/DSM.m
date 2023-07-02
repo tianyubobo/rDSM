@@ -14,14 +14,14 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
     % CC-BY-SA
 
 %% DSME parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSME_parameters;
+    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = rDSM_parameters;
 
 %% Initialization
     % Reshape input
     init_conditions = reshape(init_conditions,1,[]);
     % Creates the simplex history (SH) and points database (PD)
-    [SH,PD] = DSME_initialization(init_conditions,init_coeff,limits,func);
-
+    [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
+    
 %% DSME optimization
     % --- Initialization of the simplex state
     SimplexState = SH;
@@ -44,9 +44,12 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
         end
         % --- Degeneracy test
         c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
-        SimplexState(end) = SimplexState(end)+c;
+        SimplexState(N+3) = SimplexState(N+3)+c;
+
         % --- Update simplex history
         SH = [SH;SimplexState];
+
+        % --- Break if simplex degenerated
         if c, disp('Simplex is degenerated!'),break,end
     end
     

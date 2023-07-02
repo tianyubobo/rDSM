@@ -17,12 +17,12 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
 
 %% Initialization
     % Creates the simplex history (SH) and points database (PD)
-    [SH,PD] = rDSM_initialization(init_conditions,init_coeff,limits,func);
+    [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
     
 %% DSME optimization
     % --- Initialization of the simplex state
     SimplexState = SH;
-    N = size(PD,2)-4; % Dimension
+
     % --- Loop
     for p=1:Nsteps_max
         % --- 1-Reflexion
@@ -40,31 +40,19 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
                 end
             end
         end
-        % --- Reevaluation from WTY
-            counters = SimplexState(N+4:end);
-            too_long_in_simplex = (counters >= 1.5*N);
-            for k=1:N+1
-                if too_long_in_simplex(k)
-                    % --- Reevaluation
-                    pk = PD(SimplexState(k),1:N); % Select pk to reevaluate
-                    costk = func(pk); % Reevaluate
-                    % --- Update PD
-                    Np = size(PD,1); IDk = Np+1;
-                    PD = [PD;pk,IDk,costk,SimplexState(N+2),-1]; % -1 for reevaluation
-                    % --- Update simplex state
-                    SimplexState(k) = IDk;
-                    SimplexState(N+3+k) = 1;% Reinitilize counter
-                end
-            end
-        % --- Sort simplex state
-            SimplexState = simplexsort(SimplexState,PD);
+        % --- Reevaluation by WTY
+            [SimplexState,PD] = reevaluation(SimplexState,PD,func);
         
+        % --- Degeneracy test
+        c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
+        SimplexState(N+3) = SimplexState(N+3)+c;
+
         % --- Update simplex history % ### Added by Guy.
             SH = [SH;SimplexState]; % ### Added by Guy.
 
-        % --- Degeneracy test
-        c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
-        if c % ### Guy to Tianyu: it's enough, no need "== 0.25 || c ==0.75 || c == 0.5"
+        % --- Simplex correction if degenerated    
+        if c 
+            disp('Simplex is degenerated!')
             % --- Correction of the degenerated simplex
             [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,limits);
 %             % --- Restart simplex (literature solution) We need to compare the two solutions.
