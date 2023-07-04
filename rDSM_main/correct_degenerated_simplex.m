@@ -14,14 +14,18 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,li
 
 %% Print
     [simplex_volume,simplex_perimeter] = simplex_geo_quantities(PD(SimplexState(1:N+1),1:N));
-    fprintf('   Simplex volume:    %0.2f \n',simplex_volume)
-    fprintf('   Simplex perimeter: %0.2f \n',simplex_perimeter)
+    fprintf('   Simplex volume:    %0.4f \n',simplex_volume)
+    fprintf('   Simplex perimeter: %0.4f \n',simplex_perimeter)
 
 %% Correct the degeneracy and evaluate the new point
 % --- Compute Lagrangian partial derivatives
     Lagrangian_partial_derivatives = compute_Lagrangian_partial_derivatives(SimplexCoordinates);
+%%This is an option for choosing the initial point
+%     centroid_point = mean(SimplexCoordinates(1:N,1:N));%centroid
+%     initial_point = mean([centroid_point;SimplexCoordinates(N+1,1:N)]);    
     initial_cond = [SimplexCoordinates(N+1,1:N),0.1]; % Original points, Lagrange mult = 0.1
-% --- Solve grad L = 0 with Newton-Raphson method
+
+    % --- Solve grad L = 0 with Newton-Raphson method
     [~,~,sol,~] = mulNewton(Lagrangian_partial_derivatives,initial_cond,1e-4);
     pd = double(sol(2:N+1,:));
 
@@ -47,8 +51,8 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,li
 %% Print
     [simplex_volume,simplex_perimeter] = simplex_geo_quantities(PD(SimplexState(1:N+1),1:N));
     disp('Corrected simplex:')
-    fprintf('   Simplex volume:    %0.2f \n',simplex_volume)
-    fprintf('   Simplex perimeter: %0.2f \n',simplex_perimeter)
+    fprintf('   Simplex volume:    %0.4f \n',simplex_volume)
+    fprintf('   Simplex perimeter: %0.4f \n',simplex_perimeter)
 
 
 

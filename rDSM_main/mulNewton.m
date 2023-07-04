@@ -50,18 +50,16 @@ function [allx,ally,r,n]=mulNewton(F,X0,eps)
       r=vpa(x0-double(dFx)\transpose(Fx));
       tol=norm(r-x0);
       if(n>N)
-          disp('Too many iterations！Restarting with different inital conditions');
+          disp('Too many iterations! Restarting with different inital conditions');
           restart_new_init_condition=1;
           break;
       end
       allx(:,n)=x0;
       ally(:,n)=Fx;
-      n=n+1;
-      allx(:,all(allx==0,1))=[];
-      ally(:,all(ally==0,1))=[];
-      
+      n=n+1; 
     end
-
+    allx(:,all(allx==0,1))=[];
+    ally(:,all(ally==0,1))=[];
 %% Restart with different initial conditions
 if restart_new_init_condition
     % --- New initial condition
@@ -81,14 +79,13 @@ if restart_new_init_condition
       r=vpa(x0-double(dFx)\transpose(Fx));
       tol=norm(r-x0);
       if(n>N)
-          disp('Too many iterations！');
+          disp('Too many iterations!');
           break;
       end
       allx(:,n)=x0;
       ally(:,n)=Fx;
-      n=n+1;
-      allx(:,all(allx==0,1))=[];
-      ally(:,all(ally==0,1))=[];
-      
+      n=n+1;     
     end
 end
+allx(:,all(allx==0,1))=[];
+ally(:,all(ally==0,1))=[];

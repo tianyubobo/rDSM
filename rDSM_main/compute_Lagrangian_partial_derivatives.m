@@ -21,9 +21,9 @@ function Lag_part_derivatives = compute_Lagrangian_partial_derivatives(SimplexCo
     p_t = sum(SL);
 % --- Perimeter of the simplex as a function of s
     A = SimplexCoordinates(1:N,:)-s;
-    P_T = sum(sqrt(sum(A.^2,2))) + sum(SL(:,(N-1)));
+    P_T = sum(sqrt(sum(A.^2,2))) + sum(pdist(SimplexCoordinates(1:N,:)));
 % --- Volume
-    V_T = (1/factorial(N))*(det([[SimplexCoordinates(1:N,:)',transpose(s)];ones(1,N+1)]));
+    V_T = (1/factorial(N))*abs(det([[SimplexCoordinates(1:N,:)',transpose(s)];ones(1,N+1)]));
 
 %% Lagrangian
     % --- Lagrange multiplier
