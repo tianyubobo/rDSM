@@ -22,7 +22,7 @@
       func = @Rosenbrock_2D_function;
       init_conditions = [-3.5,12];
       limits = 10*[-1,1;-1,1]+[1;5];
-      Nsteps_max = 100;
+      Nsteps_max = 150;
 
 % %--- 3D Test
 % func = @test_function_5;
@@ -30,7 +30,7 @@
 % limits = [-1,1;-1,1;-1,1];
 % Nsteps_max = 20;
 %% Optimization process
-[sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
+[p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
 
 %% Plot solution
     figure
@@ -48,6 +48,10 @@
     
 % --- Position
 set(gcf,'Position',[20,521,1845,420])
+
+%% Print solution
+fprintf('DSM solution after %i iterations: \n', Nsteps_max)
+fprintf('   %0.3f \n',p_sol)
 
 %% Interesting cases:
 % (1) func = @test_function_2; 

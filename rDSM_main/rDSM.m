@@ -52,11 +52,9 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
 
         % --- Simplex correction if degenerated    
         if c 
-            disp('Simplex is degenerated!')
+            disp('Simplex is degenerated! Correction.')
             % --- Correction of the degenerated simplex
             [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,limits);
-%             % --- Restart simplex (literature solution) We need to compare the two solutions.
-%             [SimplexState,PD] = restart_simplex(SimplexState,PD,func);
             % --- Update simplex history
             SH = [SH;SimplexState]; % ### Added by Guy.
         end

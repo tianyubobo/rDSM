@@ -1,5 +1,6 @@
 function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
-% This function is the main one for the rDSM algorithm
+% This function is a variant of DSM where the simplex is "restarted" when
+% degenerated.
 
 %% DSM parameters
     [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = rDSM_parameters;
@@ -39,35 +40,14 @@ function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
             
         % --- Simplex restart if degenerated, by WTY
         if c
-            disp('Simplex is restarting!')
-            break            
+            disp('Simplex is degenerated! Soft restart')
+             % --- Restart simplex (literature solution) We need to compare the two solutions.
+             [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_coeff);
+            % --- Update simplex history
+            SH = [SH;SimplexState]; % ### Added by Guy.
         end       
     end
-    while c
-     restart = PD(SimplexState(1,1),1:N)
-            Restart_history = [Restart_history;restart];
-            history_n = size(Restart_history,1);
-            if history_n>1
-                restart_last = Restart_history(history_n-1,1:N);
-                if norm(restart-restart_last)<1.0e-6
-                    break
-                else
-                    [SimplexState,PD] = restart_simplex(restart,init_coeff,limits,func,Nsteps_max,SH,PD);
-                    % --- Update simplex history 
-                    SH = [SH;SimplexState]; 
-                end
-            else
-            [SimplexState,PD] = restart_simplex(restart,init_coeff,limits,func,Nsteps_max,SH,PD);  
-            % --- Update simplex history 
-            SH = [SH;SimplexState]; 
-            end
-    % --- Degeneracy test
-        c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
-        SimplexState(N+3) = SimplexState(N+3)+c;
-
-        % --- Update simplex history 
-            SH = [SH;SimplexState];         
-    end
+    
 %% Solution
     PSOL = PD(SH(end,1),1:end-4);
 end

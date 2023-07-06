@@ -1,4 +1,4 @@
-function [SimplexState,PD] = restart_simplex(init_conditions,init_coeff,limits,func,Nsteps_max,SH,PD)
+function [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_coeff)
     % This function is restarts the simplex when it is degenerated.
     % It is a step for the DSME algorithm.
 
@@ -6,41 +6,33 @@ function [SimplexState,PD] = restart_simplex(init_conditions,init_coeff,limits,f
 
     % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % CC-BY-SA
-%% DSM parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = rDSM_parameters;   
-%% Restart    
-    [~,~,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
-    
-% *** Select furthest point from the best one and displace it such as:
-% ***   (i)  The circumference is the same
-% ***   (ii) The volume is maximized
 
-%% restartDSM optimization
-    % --- Initialization of the simplex state
-    SimplexState = SH;
+%% Parameters
+    N = size(PD,2)-4; % Dimension
+    dX = init_coeff*(limits(:,2)-limits(:,1)); % Shifts
 
-    % --- Loop
-    for p=1:Nsteps_max
-        % --- 1-Reflexion
-        [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits);
-        if c ~= 1
-        % --- 2-Expansion
-        [SimplexState,PD,c] = expansion(SimplexState,PD,func,gamm,IDr,limits);
-        % --- 3-Contraction
-            if c~=2 && c~=1
-        [SimplexState,PD,c] = contraction(SimplexState,PD,func,phi,IDr);
-        % --- 4-shrink
-                if c~=31 && c~=32
-        [SimplexState,PD] = shrink(SimplexState,PD,func,sigm);
-                end
-            end
-        end
-        % --- Degeneracy test
-        
-        c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
-        SimplexState(N+3) = SimplexState(N+3)+c;
-        % --- Update simplex history 
-        SH = [SH;SimplexState];           
-    end
-    disp('Simplex is degenerated!')
-end
+
+%% Restart the simplex from the best point
+    % --- Best point
+    best_point = PD(SimplexState(1),1:N);
+    % --- Build intial points and evaluation
+    p1_N_plus_one = repmat(best_point,N+1,1); % Starting coordinates
+    cost1_N_plus_one = [func(best_point);NaN(N,1)]; % Values
+    for p=1:N
+        p1_N_plus_one(p+1,p) = p1_N_plus_one(p+1,p) + dX(p); % Shift
+        cost1_N_plus_one(p+1) = func(p1_N_plus_one(p+1,:)); % Evaluation
+    end 
+
+%% Update
+% --- Update PD
+    Np = size(PD,1); IDs = Np+(1:N)';
+    PD = [PD;p1_N_plus_one(2:(N+1),:),IDs,cost1_N_plus_one(2:(N+1),:),zeros(N,2)];
+
+% --- Update simplex state
+    SimplexState(2:N+1) = IDs;
+    SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
+    SimplexState(N+3) = 0; % Restart
+    SimplexState(N+5:end) = ones(1,N); % Counter of points 2 to N+1 reinitialize to 1
+
+% --- Sort simplex state
+    SimplexState = simplexsort(SimplexState,PD);

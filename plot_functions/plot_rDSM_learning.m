@@ -22,7 +22,7 @@ function plot_rDSM_learning(PointsDatabase)
 scatter(1:NEval,PointsDatabase(:,N+2),MS,"yellow","filled","o","MarkerEdgeColor","black")
 ylim([0,1.2*max_cost])
 
-xlabel('\# Evaluations')
+xlabel('# Evaluations')
 ylabel('Cost')
 
 % --- Cosmetic and shape
