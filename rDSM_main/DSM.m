@@ -43,14 +43,14 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
             end
         end
         % --- Degeneracy test
-        c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
-        SimplexState(N+3) = SimplexState(N+3)+c;
+        %c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
+        %SimplexState(N+3) = SimplexState(N+3)+c;
 
         % --- Update simplex history
         SH = [SH;SimplexState];
 
         % --- Break if simplex degenerated
-        if c, disp('Simplex is degenerated!'),break,end
+        %if c, disp('Simplex is degenerated!'),break,end
     end
     
 %% Solution

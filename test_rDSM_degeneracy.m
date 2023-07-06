@@ -1,4 +1,4 @@
-    % This script launches an optimization process for the DSM algorithm.
+    % This script launches an optimization process for the rDSM algorithm.
     % This script tests if the degeneracy is well coded and addressed.
     % A well chosen test function should be used.
 
@@ -19,11 +19,16 @@
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
 
-% --- 3D Test
-func = @test_function_5;
-init_conditions = [-0.75,0.35,0.9];
-limits = [-1,1;-1,1;-1,1];
-Nsteps_max = 20;
+      func = @Rosenbrock_2D_function;
+      init_conditions = [-3.5,12];
+      limits = 10*[-1,1;-1,1]+[1;5];
+      Nsteps_max = 100;
+
+% %--- 3D Test
+% func = @test_function_5;
+% init_conditions = [-0.75,0.35,0.9];
+% limits = [-1,1;-1,1;-1,1];
+% Nsteps_max = 20;
 %% Optimization process
 [sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
 

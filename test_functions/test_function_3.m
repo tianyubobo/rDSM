@@ -20,4 +20,5 @@ end
 %% Evaluation
 val = -sqrt(2)*(x-y)/(4*sqrt(2))+0.5;
 val = val + (x<0).*(y<0) * 10^3;
-
+val = val + (y<-1) * 10^3;
+val = val + (x>1) * 10^3;

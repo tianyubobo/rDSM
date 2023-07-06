@@ -1,5 +1,5 @@
 function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
-    % This function is the main one for the DSME algorithm
+    % This function is the main one for the rDSM algorithm
     % Note that when a point goes outside the domain, no evaluation is
     % performed and an infinite cost is automatically associated to this
     % point.

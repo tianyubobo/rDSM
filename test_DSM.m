@@ -12,6 +12,10 @@
     limits = [-1,1;-1,1];
     Nsteps_max = 30;
 
+%     func = @Rosenbrock_2D_function;
+%     init_conditions = [-3.5,12];
+%     limits = 10*[-1,1;-1,1]+[1;5];
+%     Nsteps_max = 150;
 %% Optimization process
     [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
 
@@ -30,14 +34,16 @@
     set(gcf,'Position',[20,521,1845,420])
 
 %% Compare with fminsearch
-%     options = optimset('PlotFcns',@optimplotfval,'MaxIter',Nsteps_max);
-%     fminsearch_sol = fminsearch(func,init_conditions,options);
+%       options = optimset('PlotFcns',@optimplotfval,'TolX',1.0e-6);
+%       %options = optimset('OutputFcn',@optimplotfval,'Display','iter');
+%       %figure
+%       [fminsearch_sol,fval,exitflag,output] = fminsearch(func,init_conditions,options);
 
 %% Print solution
-    fprintf('DSM solution after %i iterations: \n', Nsteps_max)
-    fprintf('   %0.3f \n',p_sol)
-    fprintf('fminsearch solution after %i iterations: \n', Nsteps_max)
-    fprintf('   %0.3f \n',fminsearch_sol)
+fprintf('DSM solution after %i iterations: \n', Nsteps_max)
+fprintf('   %0.3f \n',p_sol)
+%fprintf('fminsearch solution after %i iterations: \n', Nsteps_max)
+%fprintf('   %0.3f \n',fminsearch_sol)
 
 %% Interesting cases
     % --- 2D
