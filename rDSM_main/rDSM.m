@@ -19,7 +19,7 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
     % Creates the simplex history (SH) and points database (PD)
     [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
     
-%% DSME optimization
+%% rDSM optimization
     % --- Initialization of the simplex state
     SimplexState = SH;
 
@@ -41,7 +41,8 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
             end
         end
         % --- Reevaluation by WTY
-            [SimplexState,PD] = reevaluation(SimplexState,PD,func);
+            % experiments
+            %[SimplexState,PD] = reevaluation(SimplexState,PD,func);
         
         % --- Degeneracy test
         c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
@@ -50,15 +51,30 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
         % --- Update simplex history % ### Added by Guy.
             SH = [SH;SimplexState]; % ### Added by Guy.
 
-        % --- Simplex correction if degenerated    
-        if c 
-            disp('Simplex is degenerated! Correction.')
-            % --- Correction of the degenerated simplex
-            [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,limits);
-            % --- Update simplex history
-            SH = [SH;SimplexState]; % ### Added by Guy.
-        end
-     end
+               % --- Simplex correction if degenerated    
+               mu = 0;% the mu-th worst point need to be moved
+               for q = 1:N
+                   if c 
+                       disp('Simplex is degenerated! Correction.')
+                       mu = mu + 1;
+                       % --- Correction of the degenerated simplex
+                       [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,limits,mu);
+                       % --- Update simplex history
+                       SH = [SH;SimplexState]; % ### Added by Guy.
+                       c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);% check again if degenerateda
+                       %check if any point outside the domain
+                       [row,~] = find(PD(:,end)==0.5);
+                       border_limits = transpose(PD(row(end),1:N)) -limits;
+                       if all(border_limits(:,1).*border_limits(:,2)>0)
+                           c = 60;%move the second worst point if it is outside the domian
+                           %Make the outside point as the (mu+1)-th worst
+                           [~,loc] = find(SimplexState(1:N+1)==row);
+                           SimplexState([N,loc]) = SimplexState([loc,N]);
+                       end
+                   end
+               end
+               
+            end
     
 %% Solution
     PSOL = PD(SH(end,1),1:end-4);

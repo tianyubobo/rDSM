@@ -23,7 +23,7 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,li
 %%This is an option for choosing the initial point
 %     centroid_point = mean(SimplexCoordinates(1:N,1:N));%centroid
 %     initial_point = mean([centroid_point;SimplexCoordinates(N+1,1:N)]);    
-    initial_cond = [SimplexCoordinates(N+1,1:N),0.1]; % Original points, Lagrange mult = 0.1
+    initial_cond = [0.1,SimplexCoordinates(end-(mu-1),:)]; % Lagrange mult = 0.1, Original points
 
     % --- Solve grad L = 0 with Newton-Raphson method
     [~,~,sol,~] = mulNewton(Lagrangian_partial_derivatives,initial_cond,1e-4);
@@ -43,7 +43,7 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,c,li
 
 % --- Update simplex state
     SimplexState(N+3) = c;
-    SimplexState(N+1) = IDd;
+    SimplexState(N+1-(mu-1)) = IDd;
 
 % --- Sort simplex state
     SimplexState = simplexsort(SimplexState,PD);

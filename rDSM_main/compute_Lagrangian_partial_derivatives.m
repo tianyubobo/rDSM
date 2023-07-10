@@ -19,9 +19,14 @@ function Lag_part_derivatives = compute_Lagrangian_partial_derivatives(SimplexCo
 % --- Perimeter of the simplex
     SL = pdist(SimplexCoordinates); %SL: side length
     p_t = sum(SL);
+
+% ---- Select the mu-th worst point to be moved, by WTY,20230707
+    unmoved_point = SimplexCoordinates;
+    unmoved_point(end-(mu-1),:)=[];
+
 % --- Perimeter of the simplex as a function of s
-    A = SimplexCoordinates(1:N,:)-s;
-    P_T = sum(sqrt(sum(A.^2,2))) + sum(pdist(SimplexCoordinates(1:N,:)));
+    A = unmoved_point - s;
+    P_T = sum(sqrt(sum(A.^2,2))) + sum(pdist(unmoved_point));
 % --- Volume
     V_T = (1/factorial(N))*abs(det([[SimplexCoordinates(1:N,:)',transpose(s)];ones(1,N+1)]));
 
