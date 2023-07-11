@@ -36,3 +36,4 @@ function [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_co
 
 % --- Sort simplex state
     SimplexState = simplexsort(SimplexState,PD);
+end
