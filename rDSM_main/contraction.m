@@ -44,9 +44,6 @@ function [SimplexState,PD,c,IDr] = contraction(SimplexState,PD,func,phi,IDr)
         % --- Sort counters - WTY: All SimplexState is updated
         SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
         SimplexState(end) = 1; % Counter of pN+1
-%         SimplexState(N+4) = SimplexState(N+4)+1;%Counter
-%         SimplexState(N+5) = SimplexState(N+5);%Counter
-%         SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         % --- Update simplex state
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end
@@ -66,9 +63,6 @@ function [SimplexState,PD,c,IDr] = contraction(SimplexState,PD,func,phi,IDr)
         % --- Update counters - WTY: All SimplexState is updated
         SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
         SimplexState(end) = 1; % Counter of pN+1
-%         SimplexState(N+4) = SimplexState(N+4)+1;%Counter
-%         SimplexState(N+5) = SimplexState(N+5);%Counter
-%         SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         % --- Sort simplex state
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end

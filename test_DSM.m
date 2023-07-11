@@ -7,20 +7,11 @@
     % CC-BY-SA
 
 %% Parameters
-%     func = @test_function_3;
-%     init_conditions = [-0.75,0.35];
-%     limits = [-1,1;-1,1];
-%     Nsteps_max = 60;
-
-%     func = @Rosenbrock_2D_function;
-%     init_conditions = [-3.5,12];
-%     limits = 10*[-1,1;-1,1]+[1;5];
-%     Nsteps_max = 150;
-
-    func = @test_function_6;
-    init_conditions = [-0.75,0.35,0.35];
+    func = @test_function_7;
+    init_conditions = [0.5,-0.4,0.8];
     limits = [-1,1;-1,1;-1,1];
     Nsteps_max = 100;
+    
 %% Optimization process
     [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
 
@@ -62,8 +53,23 @@ fprintf('   %0.3f \n',p_sol)
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
 % 
+%     func = @Rosenbrock_2D_function;
+%     init_conditions = [-3.5,12];
+%     limits = 10*[-1,1;-1,1]+[1;5];
+%     Nsteps_max = 150;
+
     % --- 3D
 %     func = @test_function_5;
 %     init_conditions = [-0.75,0.35,0.35];
 %     limits = [-1,1;-1,1;-1,1];
 %     Nsteps_max = 30;
+% 
+%     func = @test_function_6;
+%     init_conditions = [-0.75,0.35,0.35];
+%     limits = [-1,1;-1,1;-1,1];
+%     Nsteps_max = 100;
+% 
+%     func = @test_function_7;
+%     init_conditions = [0.5,-0.4,0.8];
+%     limits = [-1,1;-1,1;-1,1];
+%     Nsteps_max = 100;

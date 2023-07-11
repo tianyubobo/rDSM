@@ -46,9 +46,6 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
         % --- Update counters - WTY: All SimplexState is updated
         SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
         SimplexState(end) = 1; % Counter of pN+1
-%         SimplexState(N+4) = SimplexState(N+4);%Counter
-%         SimplexState(N+5) = SimplexState(N+5)+1;%Counter
-%         SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         % --- Sort simplex state
         SimplexState = simplexsort(SimplexState,PD); % Sort
         else % --- Only reflection
@@ -62,9 +59,6 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
         % --- Update counters - WTY: All SimplexState is updated
         SimplexState(N+4:end-1) = SimplexState(N+4:end-1)+1; % Counters from p1 to pN
         SimplexState(end) = 1; % Counter of pN+1
-%         SimplexState(N+4) = SimplexState(N+4);%Counter
-%         SimplexState(N+5) = SimplexState(N+5)+1;%Counter
-%         SimplexState(N+6) = SimplexState(N+6)+1;%Counter
         % --- Sort simplex state
         SimplexState = simplexsort(SimplexState,PD); % Sort
         end

@@ -37,8 +37,5 @@ function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
     % --- Update counters - WTY: All SimplexState is updated
     SimplexState(N+4) = SimplexState(N+4)+1; % Counter of p1
     SimplexState(N+5:end) = 1; % Counters from p2 to pN+1
-%     SimplexState(N+4) = SimplexState(N+4)+1;%Counter
-%     SimplexState(N+5) = SimplexState(N+5);%Counter
-%     SimplexState(N+6) = SimplexState(N+6);%Counter
     % --- Sort simplex state
     SimplexState = simplexsort(SimplexState,PD); % Sort

@@ -22,9 +22,9 @@
       func = @Rosenbrock_2D_function;
       init_conditions = [-3.5,12];
       limits = 10*[-1,1;-1,1]+[1;5];
-      Nsteps_max = 500;
+      Nsteps_max = 200; % 500
 
-% %--- 3D Test
+%--- 3D Test
 % func = @test_function_5;
 % init_conditions = [-0.75,0.35,0.9];
 % limits = [-1,1;-1,1;-1,1];
