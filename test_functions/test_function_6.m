@@ -1,4 +1,4 @@
-function val = test_function_5(x,y,z)
+function val = test_function_6(x,y,z)
     % This function is a test case for the rDSM algorithm.
 
     % Guy Y. Cornejo Maceda, 2023/05/10
@@ -20,3 +20,7 @@ end
 
 %% Evaluation
 val = x.^2 + y.^2 + z.^2;
+val = val + (x > -0.5) .* (x < -0.4) ...
+         .* (y >  0.0) .* (y <  0.5) ...
+         .* (z > -0.5) .* (z <  0.5) * 10^3;
+%     init_conditions = [-0.75,0.35,0.35];

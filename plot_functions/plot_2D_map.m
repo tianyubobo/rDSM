@@ -50,7 +50,8 @@ colorbar
 axis tight
 grid off
 box on
-set(gca,'DataAspectRatio',[1,1,1])
+ax = axis;
+set(gca,'DataAspectRatio',[1/(ax(4)-ax(3)),1/(ax(2)-ax(1)),1])
 %set(gca,'TickDir','none')%WTY: none is not available, use
 %'in'|'out'|'both'instead
 set(gca,'TickDir','out')

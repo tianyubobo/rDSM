@@ -13,16 +13,16 @@
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
 
-% 
+
 %     func = @test_function_3;
 %     init_conditions = [-0.75,0.35];
 %     limits = [-1,1;-1,1];
-%     Nsteps_max = 30;
+%     Nsteps_max = 60;
 
       func = @Rosenbrock_2D_function;
       init_conditions = [-3.5,12];
       limits = 10*[-1,1;-1,1]+[1;5];
-      Nsteps_max = 150;
+      Nsteps_max = 500;
 
 % %--- 3D Test
 % func = @test_function_5;
