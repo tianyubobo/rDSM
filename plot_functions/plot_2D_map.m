@@ -28,7 +28,8 @@ y = linspace(Y1,Y2,Ny);
 
 %% Evalute the function on the grid
     val = func(X,Y);
-    
+    val_min= min(min(val));% By WTY
+    val_max = max(max(val));% By WTY
 %% Plot
 imagesc(limits(1,:),limits(2,:),val);
 set(gca,'YDir','normal')
@@ -43,7 +44,8 @@ yticklabels('')
 
 % --- colorbar
 colormap(flip(gray(64)))
-caxis([0,1])
+%caxis([0,100])
+caxis([val_min,val_max])% By WTY
 colorbar
 
 % --- Cosmetic and shape

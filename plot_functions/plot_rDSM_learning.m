@@ -18,6 +18,7 @@ function plot_rDSM_learning(PointsDatabase)
     normal_costs = cost_list;
     normal_costs(normal_costs>900)=[];
     max_cost = max(normal_costs);
+    min_cost = min(normal_costs);%By WTY
     % --- Cost > 10^3
     idx = 1:numel(cost_list);
     idx_bad = idx(cost_list>900);
@@ -27,7 +28,7 @@ PP(1) = scatter(1:NEval,PointsDatabase(:,N+2),MS,"yellow","filled","o","MarkerEd
 hold on
 PP(2) = scatter(idx_bad,1.2*max_cost+0*idx_bad,MS,"red","filled","^","MarkerEdgeColor","black");
 hold off
-ylim([0,1.2*max_cost])
+ylim([1.2*min_cost,1.2*max_cost])%By WTY
 
 xlabel('# Evaluations')
 ylabel('Cost')

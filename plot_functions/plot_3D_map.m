@@ -33,7 +33,8 @@ z = linspace(Z1,Z2,Nz);
 
 %% Evalute the function on the grid
     val = func(X,Y,Z);
-    
+    val_min= min(min(val));% By WTY
+    val_max = max(max(val));% By WTY
 %% Plot
     % --- Define levels
     iso_levels = 0:0.2:1;
@@ -60,7 +61,8 @@ end
 hold off
 % --- Colorbar
 colormap(cmp_CL)
-caxis([0,1])
+%caxis([0,100])
+caxis([val_min,val_max])% By WTY
 colorbar
 
 % --- Cosmetic and shape
