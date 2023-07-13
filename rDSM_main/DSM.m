@@ -28,6 +28,7 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
     
     % --- Loop
     for p=1:Nsteps_max
+        fprintf('Simplex iteration %i\\%i.\n',p,Nsteps_max)
         % --- 1-Reflexion
         [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits);
         if c ~= 1
@@ -49,10 +50,19 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
         % --- Update simplex history
         SH = [SH;SimplexState];
 
+        % --- Maximum tolerance
+        if negligeable_improvement(PD,SimplexState,limits,1.0e-12) 
+            break
+        end 
+
         % --- Break if simplex degenerated
         %if c, disp('Simplex is degenerated!'),break,end
     end
     
 %% Solution
     PSOL = PD(SH(end,1),1:end-4);
+
+%% Print solution
+    fprintf('DSM solution after %i iterations: \n', p)
+    fprintf('   %0.3f \n',PSOL)
 end

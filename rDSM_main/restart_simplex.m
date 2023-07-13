@@ -11,6 +11,7 @@ function [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_co
     N = size(PD,2)-4; % Dimension
     dX = init_coeff*(limits(:,2)-limits(:,1)); % Shifts
 
+    disp('Simplex is degenerated! Soft restart')
 
 %% Restart the simplex from the best point
     % --- Best point

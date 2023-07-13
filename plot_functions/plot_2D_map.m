@@ -48,8 +48,8 @@ yticklabels('')
 
 % --- colorbar
 colormap(flip(gray(64)))
-%caxis([0,100])
-caxis([1.2*val_min,1.2*val_max])% By WTY
+caxis([0,1])
+% caxis([1.2*val_min,1.2*val_max])% By WTY
 colorbar
 
 % --- Cosmetic and shape

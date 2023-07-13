@@ -28,10 +28,10 @@ PP(1) = scatter(1:NEval,PointsDatabase(:,N+2),MS,"yellow","filled","o","MarkerEd
 hold on
 PP(2) = scatter(idx_bad,1.2*max_cost+0*idx_bad,MS,"red","filled","^","MarkerEdgeColor","black");
 hold off
-ylim([1.2*min_cost,1.2*max_cost])%By WTY
+ylim([min([0,min_cost]),1.2*max_cost]) % by WTY
 
-xlabel('# Evaluations')
-ylabel('Cost')
+xlabel('\# Evaluations','Interpreter','latex')
+ylabel('Cost','Interpreter','latex')
 
 % --- Cosmetic and shape
 grid off

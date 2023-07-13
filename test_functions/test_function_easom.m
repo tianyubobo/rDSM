@@ -20,10 +20,11 @@ end
 
 %% Evaluation
 val = -cos(x).*cos(y).*exp(-((x-pi).^2 + (y-pi).^2));
-
+% --- renormalization (between 0 and 1)
+val = val-(-3.0308e-05)/(3.0308e-05);
 end
 %% For testing
-% func = @test_function_eason;
+% func = @test_function_easom;
 % init_conditions = [-1,-1];
 % limits = [-5,5;-5,5];
 % Nsteps_max = 200;
