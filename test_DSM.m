@@ -7,11 +7,14 @@
     % CC-BY-SA
 
 %% Parameters
-    func = @test_function_7;
-    init_conditions = [0.5,-0.4,0.8];
-    limits = [-1,1;-1,1;-1,1];
-    Nsteps_max = 100;
-    
+%     func = @test_function_7;
+%     init_conditions = [0.5,-0.4,0.8];
+%     limits = [-1,1;-1,1;-1,1];
+%     Nsteps_max = 100;
+    func = @Rosenbrock_2D_function;
+      init_conditions = [-3.5,12];
+      limits = 10*[-1,1;-1,1]+[1;5];
+      Nsteps_max = 400; % 500
 %% Optimization process
     [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
 

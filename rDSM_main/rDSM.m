@@ -52,6 +52,14 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
         % --- Update simplex history % 
             SH = [SH;SimplexState]; % 
 
+               % --- Maximum tolerance
+        % *** If the best point and its closest neighbor are too close
+        % *** (d/D<1e-6, D diameter domain), break the for loop.
+            if negligeable_improvement(PD,SimplexState,1.0e-6) 
+                break
+            end     
+            
+            
         % --- Iterative correction of the simplex if degenerated
             if c
                 [SimplexState,PD]=iterative_simplex_correction(SimplexState,PD,func,limits,c);
@@ -59,12 +67,7 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
                 SH = [SH;SimplexState];
             end
 
-        % --- Maximum tolerance
-        % *** If the best point and its closest neighbor are too close
-        % *** (d/D<1e-6, D diameter domain), break the for loop.
-%             if negligeable_improvement(PD,tol) 
-%                 break
-%             end
+
     end
     
 %% Solution

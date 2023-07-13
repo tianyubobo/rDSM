@@ -29,7 +29,7 @@ function [SimplexState,PD]=iterative_simplex_correction(SimplexState,PD,func,lim
         % --- Save simplex state
             OldSimplexState = SimplexState;
         % --- Simplex correction
-            fprintf('   - Moving %i-th worst point. (dim=%i) \n',N+2-mu,N)
+            fprintf('   - Moving %i-th worst point. (dim=%i) \n',mu,N)% WTY:I think it is moving the mu-th worst point.
             [SimplexState,PD] = correct_degenerated_simplex(SimplexState,PD,func,limits,c);
         % --- Test point outside domain
             worst_cost = PD(SimplexState(N+1),N+2);

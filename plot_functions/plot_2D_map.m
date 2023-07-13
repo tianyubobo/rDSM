@@ -30,6 +30,10 @@ y = linspace(Y1,Y2,Ny);
     val = func(X,Y);
     val_min= min(min(val));% By WTY
     val_max = max(max(val));% By WTY
+    % WTY: Using this for Matlab R2018b and newer version is better, but I am
+    % using R2018a...
+    % val_min = min(val,[],'all');
+    % val_max = max(val,[],'all');
 %% Plot
 imagesc(limits(1,:),limits(2,:),val);
 set(gca,'YDir','normal')
@@ -45,7 +49,7 @@ yticklabels('')
 % --- colorbar
 colormap(flip(gray(64)))
 %caxis([0,100])
-caxis([val_min,val_max])% By WTY
+caxis([1.2*val_min,1.2*val_max])% By WTY
 colorbar
 
 % --- Cosmetic and shape
