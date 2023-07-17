@@ -13,22 +13,26 @@
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
 
-
 %     func = @test_function_3;
 %     init_conditions = [-0.75,0.35];
 %     limits = [-1,1;-1,1];
-%     Nsteps_max = 60;
+%     Nsteps_max = 120;
 
 %       func = @Rosenbrock_2D_function;
 %       init_conditions = [-3.5,12];
 %       limits = 10*[-1,1;-1,1]+[1;5];
-%       Nsteps_max = 400; % 500
+%       Nsteps_max = 250; % 500
+
+% func = @test_function_easom;
+% init_conditions = [-1,-1];
+% limits = [-5,5;-5,5];
+% Nsteps_max = 200;
 
 % --- 3D Test
 func = @test_function_5;
 init_conditions = [-0.75,0.35,0.9];
 limits = [-1,1;-1,1;-1,1];
-Nsteps_max = 20;
+Nsteps_max = 100;
 
 %% Optimization process
 [p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);

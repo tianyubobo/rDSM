@@ -8,11 +8,11 @@ function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
 %% Initialization
     % Creates the simplex history (SH) and points database (PD)
     [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
-    
+
 %% DSM optimization
     % --- Initialization of the simplex state
     SimplexState = SH;
-    
+      Restart_history = [];
     % --- Loop
     for p=1:Nsteps_max
         fprintf('Simplex iteration %i\\%i.\n',p,Nsteps_max)
@@ -41,14 +41,24 @@ function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
         if negligeable_improvement(PD,SimplexState,limits,1.0e-12) 
             break
         end 
-
+        [H, Restart_history] =  RestartHistory (SimplexState,PD,Restart_history,c);
+        if H
+           break
+        end
         % --- Simplex restart if degenerated, by WTY
         if c
-             % --- Restart simplex
-             [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_coeff);
-            % --- Update simplex history
-            SH = [SH;SimplexState]; % ### Added by Guy.
-        end       
+        % --- Restart simplex
+        [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_coeff);
+        % --- Update simplex history
+        SH = [SH;SimplexState]; % ### Added by Guy.
+        % --- Degeneracy test again, if the new simplex is degenerated or
+        % not.
+        c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
+        SimplexState(N+3) = SimplexState(N+3)+c;
+        % --- Update simplex history 
+            SH = [SH;SimplexState];    
+        end      
+ 
     end
     
 %% Solution
