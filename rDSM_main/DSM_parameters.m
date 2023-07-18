@@ -1,4 +1,4 @@
-function [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = rDSM_parameters
+function [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters
     % This function initialize the parameters for the rDSM algorithm.
 
     % Guy Y. Cornejo Maceda, 2023/05/10

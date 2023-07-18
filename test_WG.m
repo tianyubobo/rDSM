@@ -9,7 +9,8 @@
 %% Parameters
     func = @test_function_WG;
     Nparam = 49; % /!\ Choose a square number
-    init_conditions = 10*ones(Nparam,1); % Initial PWM
+    init_conditions = 10*ones(1,Nparam);
+    %init_conditions = 10*ones(Nparam,1); % Initial PWM
     limits = repmat([0,20],Nparam,1);
     Nsteps_max = 500;
 
