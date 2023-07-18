@@ -18,7 +18,7 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
 
 %% Initialization
     % Reshape input
-    %init_conditions = reshape(init_conditions,1,[]);
+    init_conditions = reshape(init_conditions,1,[]);
     % Creates the simplex history (SH) and points database (PD)
     [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func);
     

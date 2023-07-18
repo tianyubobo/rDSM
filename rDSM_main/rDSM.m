@@ -12,10 +12,12 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
     % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % CC-BY-SA
 
-%% DSME parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
+%% rDSM parameters
+[alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
 
 %% Initialization
+    % Reshape input
+    init_conditions = reshape(init_conditions,1,[]);
     % Creates the simplex history (SH) and points database (PD)
     [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func);
     fprintf('Simplex is initialized.\n')
