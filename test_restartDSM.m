@@ -15,7 +15,7 @@
     func = @Rosenbrock_2D_function;
     init_conditions = [-3.5,12];
     limits = 10*[-1,1;-1,1]+[1;5];
-    Nsteps_max = 30;
+    Nsteps_max = 130;
 % func = @test_function_easom;
 % init_conditions = [-1,-1];
 % limits = [-5,5;-5,5];

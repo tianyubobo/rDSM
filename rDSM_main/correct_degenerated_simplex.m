@@ -21,9 +21,10 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,limi
 % --- Compute Lagrangian partial derivatives
     Lagrangian_partial_derivatives = compute_Lagrangian_partial_derivatives(SimplexCoordinates);
 % --- This is an option for choosing the initial point
-%     centroid_point = mean(SimplexCoordinates(1:N,1:N));%centroid
-%     initial_point = mean([centroid_point;SimplexCoordinates(N+1,1:N)]);    
-    initial_cond = [0.1,SimplexCoordinates(N+1,1:N)]; % Lagrange mult = 0.1, Original points 
+    centroid_point = mean(SimplexCoordinates(1:N,1:N));%centroid
+    initial_point = mean([centroid_point;SimplexCoordinates(N+1,1:N)]);  
+    initial_cond = [0.1,initial_point]; % Lagrange mult = 0.1, 
+    %initial_cond = [0.1,SimplexCoordinates(N+1,1:N)]; % Lagrange mult = 0.1, Original points 
 
     % --- Solve grad L = 0 with Newton-Raphson method
     [~,~,sol,~] = mulNewton(Lagrangian_partial_derivatives,initial_cond,1e-4);
