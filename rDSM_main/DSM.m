@@ -14,13 +14,13 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
     % CC-BY-SA
 
 %% DSME parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = rDSM_parameters;
+    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
 
 %% Initialization
     % Reshape input
     init_conditions = reshape(init_conditions,1,[]);
     % Creates the simplex history (SH) and points database (PD)
-    [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
+    [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func);
     
 %% DSME optimization
     % --- Initialization of the simplex state

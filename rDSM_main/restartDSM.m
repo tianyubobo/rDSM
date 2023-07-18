@@ -3,11 +3,11 @@ function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
 % degenerated.
 
 %% DSM parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = rDSM_parameters;
+    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
 
 %% Initialization
     % Creates the simplex history (SH) and points database (PD)
-    [SH,PD,N] = rDSM_initialization(init_conditions,init_coeff,limits,func);
+    [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func);
 
 %% DSM optimization
     % --- Initialization of the simplex state

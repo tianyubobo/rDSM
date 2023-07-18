@@ -9,7 +9,7 @@ function plot_3D_simplex(SimplexHistory,PointsDatabase,Step)
 
 %% Parameters
 % --- rDSM parameters
-    [~,~,~,~,~,eps_edge,eps_vol] = rDSM_parameters;
+    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters;
 % --- Dimension
     N = size(PointsDatabase,2)-4; 
 % --- Plot parameters
