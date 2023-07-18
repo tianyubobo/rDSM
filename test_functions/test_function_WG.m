@@ -1,9 +1,11 @@
 function J = test_function_WG(b)
+% This function simulates an WG experiment and computes the cost function.
 
-[ax,ay,U_0,X,Y,Z,z] = WG_Parameter(4,-1.625,1.625,-1.625,1.625,8,10,b);
-Mea_act=griddata(ax,ay,z,X,Y,'linear');
-New_z=Z+Mea_act;
+%% "Experiment"
+% --- Actuation levels (z)
+    [Controlled_Z,~,~,~,~,~,~,U_0] = WG_experiment(b);
 
-%J=mean((New_z-U_0).^2,"all");% This can be used for 2018b and newer version
-J = mean(mean((New_z-U_0).^2));
+% --- Cost funtion
+    %J=mean((New_z-U_0).^2,"all");% This can be used for 2018b and newer version
+    J = mean(mean((Controlled_Z-U_0).^2));
 

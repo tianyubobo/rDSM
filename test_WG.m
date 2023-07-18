@@ -7,17 +7,19 @@
     % CC-BY-SA
 
 %% Parameters
-    func = @toy_function_WX;
-    init_conditions = zeros(1,16);
-    limits = repmat(3*[-1,1],16,1);
-    Nsteps_max = 100;
+    func = @test_function_WG;
+    Nparam = 49; % /!\ Choose a square number
+    init_conditions = 10*ones(Nparam,1); % Initial PWM
+    limits = repmat([0,20],Nparam,1);
+    Nsteps_max = 500;
 
 %% Optimization process
     [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
 
 %% Plot solution
-    plot_DSME_learning(PointsDatabase)
+    figure
+    plot_rDSM_learning(PointsDatabase)
+    figure
+    plot_WG(p_sol)
 
-%% Notes
-% Improvements to be done:
-% (1) Include the limits in the initialization.
+
