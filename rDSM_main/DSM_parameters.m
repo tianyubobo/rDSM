@@ -17,5 +17,5 @@ function [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters
     sigm = 0.5;         % Shrink parameter
     
     % --- Degeneracy parameters
-    eps_edge = 0.01;%-inf;    % Lower limit for edge ratio for degeneracy
-    eps_vol = 0.01;%-inf;     % Lower limit for volume ratio for degeneracy
+    eps_edge = 1.0e-6;%-inf;    % Lower limit for edge ratio for degeneracy
+    eps_vol = 1.0e-6;%-inf;     % Lower limit for volume ratio for degeneracy
