@@ -96,6 +96,7 @@ function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
 %% Print solution
      fprintf('restartDSM solution after %i iterations: \n', p)
      fprintf('   %0.3f \n',PSOL)
+     fprintf('Restart times: % i \n',size(Restart_history,1))
      % --- Close the output files 
     fclose(fPD);
     fclose(fSH);
