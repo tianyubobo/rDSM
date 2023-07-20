@@ -52,7 +52,7 @@ function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limit
         % --- Operation
         c=1;
         % --- SimplexState update
-        %WTY: All SimplexState is updated
+
         SimplexState(N+1) = IDr; % pN+1 <- pe
         SimplexState(N+2) = SimplexState(N+2)+1; % Simplex number
         SimplexState(N+3) = c; % Operation

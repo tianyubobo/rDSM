@@ -4,24 +4,24 @@ function [PD, SimplexState] = ReevaluMean(PD,SimplexState,N,k)
 %fclose('all');
 %delete('D:\DSME\ReevaluationHistory.txt')
 
-
 %% Select the points and calculate the mean value    
     % --- The reevaluation point
     %[Point Coordinate value, Cost,ID];
     ReevaluatedPoint = [PD(end,1:N),PD(end,N+2),size(PD,1)];
     % --- The point before reevaluated
     Points = PD(1:end-1,1:N); 
-    IDree = find(pdist([PD(end,1:N);Points])==0);
+    Dist = pdist([PD(end,1:N);Points]);
+    IDree = find(Dist(1:size(Points,1))==0);
     %[Point Coordinate value, Cost,ID];
     PreReevaluatedPoint =[PD(IDree(1),1:N),PD(IDree(1),N+2),PD(IDree(1),N+1)];
     % --- Take the mean value of costs
     %[Point Coordinate value, Cost,ID];
     NewPoint = [PD(end,1:N),mean([PD(end,N+2),PD(IDree(1),N+2)]),size(PD,1)+1];
-    % *** Here is mean over the first and last evaluation.
-    % *** Why not the mean over all the evaluations?
 
 %% Output file
-    fRH = fopen('Output\ReevaluationHistory.txt','a+');
+    fRH = fopen('Output\\ReevaluationHistory.txt','a+');
+    fprintf(fRH, '%s','Reevaluation points: p_1 | ... | p_N | cost| ID (before | after | mean)');
+    fprintf(fRH,'\r\n');
     fprintf(fRH,'%.4f\t',PreReevaluatedPoint);
     fprintf(fRH,'\r\n'); 
     fprintf(fRH,'%.4f\t',ReevaluatedPoint);

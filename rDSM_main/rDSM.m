@@ -21,26 +21,15 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
     % Creates the simplex history (SH) and points database (PD)
     [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func);
     fprintf('Simplex is initialized.\n')
-    
-    delete('D:\DSME\PointsDatabase.txt')
-    fPD = fopen('D:\DSME\PointsDatabase.txt','a+');
-    fprintf(fPD,'%s','p_1 | ... | p_N | ID | Cost | in Simplex numb. | Operation');
-    fprintf(fPD,'\r\n'); 
-    for i = 1:size(PD,1)     
-            fprintf(fPD,'%.4f\t',PD(i,:));
-            fprintf(fPD,'\r\n');
-    end
-    lines = size(PD,1);
-    delete('D:\DSME\SimplexHistory.txt')
-    fSH = fopen('D:\DSME\SimplexHistory.txt','a+');
-    fprintf(fSH,'%s','p1 | ... | pN+1 | Simplex numb. | Operation | C1 | ... | CN+1');
-    fprintf(fSH,'\r\n'); 
-
+%% Clean for the log files    
+    fclose('all');
+    delete('Output\PointsDatabase.txt')
+    delete('Output\SimplexHistory.txt')
+    delete('Output\ReevaluationHistory.txt')
 %% rDSM optimization
     % --- Initialization of the simplex state
     SimplexState = SH;
-    fprintf(fSH,'%.4f\t',SimplexState);
-    fprintf(fSH,'\r\n'); 
+
     % --- Loop
     for p=1:Nsteps_max
         fprintf('Simplex iteration %i\\%i.\n',p,Nsteps_max)
@@ -66,16 +55,12 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
             c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
             SimplexState(N+3) = SimplexState(N+3)+c;
 
-        % --- Update simplex history % 
-            SH = [SH;SimplexState]; % 
-        % --- Output point database and simplex history
-        for i = lines+1:size(PD,1)    
-            fprintf(fPD,'%.4f\t',PD(i,:));
-            fprintf(fPD,'\r\n');
-        end
-        lines = size(PD,1);
-        fprintf(fSH,'%.4f\t',SimplexState);
-        fprintf(fSH,'\r\n'); 
+        % --- Update simplex history  
+            SH = [SH;SimplexState]; 
+            
+        % --- Save log files
+        write_output_files(SH,PD) 
+        
         % --- Maximum tolerance
         if negligeable_improvement(PD,SimplexState,limits,1.0e-12) 
             break
@@ -86,8 +71,8 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
             [SimplexState,PD]=iterative_simplex_correction(SimplexState,PD,func,limits,c);
             % --- Update simplex history
             SH = [SH;SimplexState];
-            fprintf(fSH,'%.4f\t',SimplexState);
-            fprintf(fSH,'\r\n'); 
+            % --- Save log files
+            write_output_files(SH,PD)  
         end
     end
     
@@ -97,7 +82,5 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
 %% Print solution
     fprintf('rDSM solution after %i iterations: \n', p)
     fprintf('   %0.3f \n',PSOL)
-     % --- Close the output files 
-    fclose(fPD);
-    fclose(fSH);
+
 end

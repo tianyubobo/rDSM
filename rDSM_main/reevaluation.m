@@ -26,14 +26,10 @@ for k=1:N+1
         % --- Update simplex state
         SimplexState(k) = IDk;
         SimplexState(N+3+k) = 1;% Reinitilize counter
-        % --- Take the mean value, set a new function, add a new point with mean
-             % value in the database.
+        % --- Take the mean cost value before and after reevaluation.
         [PD, SimplexState] = ReevaluMean(PD,SimplexState,N,k);
     end
 end
-%% Take the mean value, set a new function, add a new point with mean
-% value in the database.
-
 
 %% --- Sort simplex state
     SimplexState = simplexsort(SimplexState,PD);

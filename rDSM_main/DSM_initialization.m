@@ -2,6 +2,19 @@ function [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func)
     % This function initialize the simplex history (SH) and points database
     % (PD) for the DSME algorithm.
 
+    % --- Operation 
+    % -2 :  Take the mean cost after reevaluation
+    % -1 :  Reevaluation
+    % 0  :  Initialization;
+    % 1  :  Reflection
+    % 2  :  Expansion
+    % 4  :  Shrink
+    % 31 :  Outside contraction
+    % 32 :  Inside contraction
+    % +0.25:Edge degenerated
+    % +0.5 :Volume degenerated
+    % +0.75:Edge and volume degenerated
+    
     % Guy Y. Cornejo Maceda, 2023/05/10
 
     % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)

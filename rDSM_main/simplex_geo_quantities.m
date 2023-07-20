@@ -11,7 +11,6 @@ function [simplex_volume,simplex_perimeter]=simplex_geo_quantities(SimplexCoordi
     
 %% Volume
     simplex_volume = (1/factorial(N))*abs(det([SimplexCoordinates';ones(1,N+1)]));
-
 %% Perimeter
     SL = pdist(SimplexCoordinates); %SL: side length
     simplex_perimeter = sum(SL);

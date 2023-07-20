@@ -13,10 +13,17 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,limi
     SimplexCoordinates = PD(SimplexState(1:N+1),1:N); % Simplex coordinates
 
 %% Print
+    if c == 0.25
+        fprintf('Simplex degenerated type: %s \n','Edge degenrated')
+    elseif c == 0.75
+        fprintf('Simplex degenerated type: %s \n','Volume degenrated')
+    elseif c == 0.5
+        fprintf('Simplex degenerated type: %s \n','Both edge and volume degenrated')
+    end
     [simplex_volume,simplex_perimeter] = simplex_geo_quantities(PD(SimplexState(1:N+1),1:N));
-    fprintf('   Simplex volume:    %0.4f \n',simplex_volume)
-    fprintf('   Simplex perimeter: %0.4f \n',simplex_perimeter)
-
+    fprintf('   Simplex volume :    %e \n',simplex_volume)
+    fprintf('   Simplex perimeter: %0.8f \n',simplex_perimeter)
+    
 %% Correct the degeneracy and evaluate the new point
 % --- Compute Lagrangian partial derivatives
     Lagrangian_partial_derivatives = compute_Lagrangian_partial_derivatives(SimplexCoordinates);
@@ -52,5 +59,5 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,limi
 %% Print
     [simplex_volume,simplex_perimeter] = simplex_geo_quantities(PD(SimplexState(1:N+1),1:N));
     disp('Corrected simplex:')
-    fprintf('   Simplex volume:    %0.4f \n',simplex_volume)
-    fprintf('   Simplex perimeter: %0.4f \n',simplex_perimeter)
+    fprintf('   Simplex volume:    %e \n',simplex_volume)
+    fprintf('   Simplex perimeter: %0.8f \n',simplex_perimeter)

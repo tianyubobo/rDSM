@@ -21,7 +21,8 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
     init_conditions = reshape(init_conditions,1,[]);
     % Creates the simplex history (SH) and points database (PD)
     [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func);
-    % --- Delete output files    
+    % --- Delete output files 
+    fclose('all');
     delete('Output\PointsDatabase.txt')
     delete('Output\SimplexHistory.txt')
  
