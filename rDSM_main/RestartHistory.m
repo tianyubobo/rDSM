@@ -10,7 +10,7 @@ N = size(PD,2)-4; % Dimension
  % --- H is the counter for how many times the point is restared.
 H = 0;
   if c==0.5 || c==0.25 || c ==0.75
-     restart = PD(SimplexState(1,1),1:N)
+     restart = PD(SimplexState(1,1),1:N);
             Restart_history = [Restart_history;restart];
             history_n = size(Restart_history,1);
             if history_n>1
