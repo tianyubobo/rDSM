@@ -3,6 +3,8 @@ function [H, Restart_history] =  RestartHistory (SimplexState,PD,Restart_history
 % points.If the restart point is restarted more than twice, stop
 % the loop for optimization.
 
+    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
+    % CC-BY-SA
 %% Parameter
 N = size(PD,2)-4; % Dimension
 

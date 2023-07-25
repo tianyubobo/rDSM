@@ -13,10 +13,11 @@
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 30;
 
-%     func = @test_function_3;
-%     init_conditions = [-0.75,0.35];
-%     limits = [-1,1;-1,1];
-%     Nsteps_max = 20;
+    func = @test_function_3;
+    init_conditions = [-0.75,0.35];
+    N = size(init_conditions,2);%dimension
+    limits = [-1,1;-1,1];
+    Nsteps_max = 20;
 
 %       func = @Rosenbrock_2D_function;
 %       init_conditions = [-3.5,12];
@@ -29,10 +30,10 @@
 % Nsteps_max = 200;
 
 % --- 3D Test
-func = @test_function_5;
-init_conditions = [-0.75,0.35,0.9];
-limits = [-1,1;-1,1;-1,1];
-Nsteps_max = 100;
+% func = @test_function_5;
+% init_conditions = [-0.75,0.35,0.9];
+% limits = [-1,1;-1,1;-1,1];
+% Nsteps_max = 100;
 
 % -- Wang Xin's wind generator test
 % func = @test_function_WG;
@@ -41,7 +42,7 @@ Nsteps_max = 100;
 % Nsteps_max = 80;
 
 %% Optimization process
-[p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
+[p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max,N);
 
 %% Plot solution
     figure

@@ -8,7 +8,7 @@ function Lag_part_derivatives = compute_Lagrangian_partial_derivatives(SimplexCo
         
     % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (email address)
+    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
     % CC-BY-SA
 
 %% Parameters

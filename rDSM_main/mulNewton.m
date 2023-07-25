@@ -30,11 +30,7 @@ function [allx,ally,r,n]=mulNewton(F,X0,eps)
 
 %% Newton–Raphson method
 % --- Initial condition
-    x0 = transpose(X0); %x0 = x0([end,1:end-1]) ;
-        % L_mult -> x0(1)
-        % s1     -> x0(2)
-        % s2     -> x0(3)
-        % ...
+    x0 = transpose(X0); 
 % --- Compute Jacobian
     dF = jacobian(F,var);
 % --- Evaluate function and Jacobian at initial point
@@ -62,7 +58,7 @@ function [allx,ally,r,n]=mulNewton(F,X0,eps)
 %% Restart with different initial conditions
 if restart_new_init_condition
     % --- New initial condition
-     x0 = transpose(X0); %x0 = x0([end,1:end-1]) ;
+     x0 = transpose(X0); 
      x0(1) = -x0(1);
     % --- Evaluate function and Jacobian at initial point
     Fx = subs(F,var,x0);

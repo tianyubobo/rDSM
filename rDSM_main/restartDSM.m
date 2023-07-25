@@ -1,9 +1,9 @@
-function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max)
+function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max,N)
 % This function is a variant of DSM where the simplex is "restarted" when
 % degenerated.
 
 %% DSM parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
+    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters(N);
 
 %% Initialization
     % Reshape input

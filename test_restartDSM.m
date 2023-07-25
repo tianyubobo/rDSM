@@ -24,10 +24,11 @@
 % --- 3D function
 func = @test_function_5;
 init_conditions = [-0.75,0.35,0.9];
+N = size(init_conditions,2);%dimension
 limits = [-1,1;-1,1;-1,1];
 Nsteps_max = 100;
 %% Optimization process
-    [p_sol,SimplexHistory,PointsDatabase] = restartDSM(init_conditions,limits,func,Nsteps_max);
+    [p_sol,SimplexHistory,PointsDatabase] = restartDSM(init_conditions,limits,func,Nsteps_max,N);
 
 %% Plot solution
     figure

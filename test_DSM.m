@@ -22,8 +22,9 @@
 %     Nsteps_max = 150;
     func = @Rosenbrock_2D_function;
     init_conditions = [-3.5,12];
+    N = size(init_conditions,2);%dimension
     limits = 10*[-1,1;-1,1]+[1;5];
-    Nsteps_max = 100;
+    Nsteps_max = 40;
 % func = @test_function_easom;
 % init_conditions = [-1,-1];
 % limits = [-5,5;-5,5];
@@ -34,7 +35,7 @@
 % limits = [-1,1;-1,1;-1,1];
 % Nsteps_max = 100;
 %% Optimization process
-    [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
+    [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max,N);
 
 %% Plot solution
     figure

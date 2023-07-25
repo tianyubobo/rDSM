@@ -5,7 +5,7 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,limi
         
     % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (email address)
+    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
     % CC-BY-SA
 
 %% Parameters

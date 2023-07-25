@@ -3,7 +3,7 @@ function write_output_files(SH,PD)
         
     % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (email address)
+    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
     % CC-BY-SA
 
 

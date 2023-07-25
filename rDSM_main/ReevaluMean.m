@@ -1,10 +1,7 @@
 function [PD, SimplexState] = ReevaluMean(PD,SimplexState,N,k)
-% It's better to run these lines of codes before run the test file, so that, we close and
-% clean the old useless files.
-%fclose('all');
-%delete('D:\DSME\ReevaluationHistory.txt')
-
-
+%Take the mean value of the reevaluated points.
+    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
+    % CC-BY-SA
 %% Select the points and calculate the mean value    
     % --- The reevaluation point
     %[Point Coordinate value, Cost,ID];

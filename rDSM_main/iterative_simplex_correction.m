@@ -10,12 +10,12 @@ function [SimplexState,PD]=iterative_simplex_correction(SimplexState,PD,func,lim
         
     % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (email address)
+    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
     % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension
-    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters;
+    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters(N);
 
 %% Print
     disp('Simplex is degenerated! Correction...')

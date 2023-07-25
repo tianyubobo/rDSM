@@ -33,7 +33,7 @@ function [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func)
         cost1_N_plus_one(p+1) = func(p1_N_plus_one(p+1,:)); % Evaluation
     end 
 
-    % ---Initialize the simplex as fminsearch，by WTY
+    % ---Initialize the simplex as fminsearch by WTY
 %     p1_N_plus_one = repmat(init_conditions,N+1,1); % Starting coordinates
 %     cost1_N_plus_one = [func(init_conditions);NaN(N,1)]; % Values
 %     for p=1:N
