@@ -9,7 +9,7 @@ function write_output_files(SH,PD)
 
 %% Open output files
     % --- Point database
-        fPD = fopen('Output\PointsDatabase.txt','a+');
+        fPD = fopen('Output\PointsDatabase.txt','w+');
         fprintf(fPD,'%s','p_1 | ... | p_N | ID | Cost | in Simplex numb. | Operation');
         fprintf(fPD,'\r\n'); 
     % --- Simplex history

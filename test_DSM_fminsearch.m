@@ -6,33 +6,23 @@
     % CC-BY-SA
 
 %% Parameters
-%         func = @test_function_7;
-%         init_conditions = [0.5,-0.4,0.8];
-%         limits = [-1,1;-1,1;-1,1];
-%     func = @test_function_3;
-%     init_conditions = [-0.75,0.35];
-%     limits = [-1,1;-1,1];
-%     Nsteps_max = 500;
-%     func = @Rosenbrock_2D_function;
-%     init_conditions = [-3.5,12];
-%     limits = 10*[-1,1;-1,1]+[1;5];
-%     Nsteps_max = 150;
 
-% --- 3D function
-func = @test_function_5;
-init_conditions = [-0.75,0.35,0.9];
-limits = [-1,1;-1,1;-1,1];
-Nsteps_max = 100;
-        epsilon = 1.0e-6; %epsilon is the converged condition.
+func = @Rosenbrock_ND_function;
+Nparam =16;
+init_conditions = 10*ones(1,Nparam); 
+limits = repmat([0,20],Nparam,1);   
+Nsteps_max = 500;
+epsilon = 1.0e-6; %epsilon is the converged condition.
     
 %%  fminsearch
-        options = optimset('PlotFcns',@optimplotfval,'TolX',epsilon);
+        options = optimset('PlotFcns',@optimplotfval,'MaxFunEvals',Nsteps_max);
+        %options = optimset('PlotFcns',@optimplotfval,'TolX',epsilon);
         %options = optimset('OutputFcn',@optimplotfval,'Display','iter');
 %         figure
         [fminsearch_sol,fval,exitflag,output] = fminsearch(func,init_conditions,options);
 
 %% Print solution
-        fprintf('fminsearch solution until converging to %i : \n', epsilon)
+        fprintf('fminsearch solution after %i iterations: \n', Nsteps_max)
         fprintf('   %0.3f \n',fminsearch_sol)
 
 %% Obtain the iteration process data in the figure

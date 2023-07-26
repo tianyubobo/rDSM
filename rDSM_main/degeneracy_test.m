@@ -34,6 +34,7 @@ function [c,edge_ratio,volume_ratio] = degeneracy_test(SimplexState,PD,eps_edge,
         edge_ratio = min(norm_list)/max(norm_list);
     % *** Test 2: Volume ratio
         volume_ratio = abs(det(edge_matrix))/prod(norm_list);
+        %volume_ratio = (abs(det(edge_matrix))/prod(norm_list))^(1/64);
     % *** Tests
     c = 0;
     if (edge_ratio < eps_edge) 
