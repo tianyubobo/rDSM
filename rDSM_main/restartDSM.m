@@ -60,8 +60,6 @@ function [PSOL,SH,PD] = restartDSM(init_conditions,limits,func,Nsteps_max,N)
         [SimplexState,PD] = restart_simplex(SimplexState,PD,func,limits,init_coeff);
         % --- Update simplex history
         SH = [SH;SimplexState]; % ### Added by Guy.
-        fprintf(fSH,'%.4f\t',SimplexState);
-        fprintf(fSH,'\r\n'); 
         % --- Degeneracy test again, if the new simplex is degenerated or
         % not.
         c = degeneracy_test(SimplexState,PD,eps_edge,eps_vol);
