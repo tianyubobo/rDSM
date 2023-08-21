@@ -13,7 +13,7 @@ function write_output_files(SH,PD)
         fprintf(fPD,'%s','p_1 | ... | p_N | ID | Cost | in Simplex numb. | Operation');
         fprintf(fPD,'\r\n'); 
     % --- Simplex history
-        fSH = fopen('Output\SimplexHistory.txt','a+');
+        fSH = fopen('Output\SimplexHistory.txt','w+');
         fprintf(fSH,'%s','p1 | ... | pN+1 | Simplex numb. | Operation | C1 | ... | CN+1');
         fprintf(fSH,'\r\n'); 
 
