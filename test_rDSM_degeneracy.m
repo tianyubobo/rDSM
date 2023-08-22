@@ -8,14 +8,13 @@
     % CC-BY-SA
 
 %% Parameters
-
-    func = @test_function_3;
-    init_conditions = [-0.75,0.35];
-    N = size(init_conditions,2);%dimension
+    func = @test_function_2; 
+    init_conditions = [-0.75,-0.65];
     limits = [-1,1;-1,1];
-    Nsteps_max = 20;
+    Nsteps_max = 30;
+
 %% Optimization process
-[p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max,N);
+[p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
 
 %% Plot solution
     figure
@@ -40,9 +39,8 @@
 %     init_conditions = [-3.5,12];
 %     limits = 10*[-1,1;-1,1]+[1;5];
 %     Nsteps_max = 150;
-%     func = @test_function_3;
+% (3) func = @test_function_3; % Does not work
 %     init_conditions = [-0.75,0.35];
-%     N = size(init_conditions,2);%dimension
 %     limits = [-1,1;-1,1];
 %     Nsteps_max = 20;
 % func = @test_function_easom;

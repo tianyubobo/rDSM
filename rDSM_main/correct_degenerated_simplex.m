@@ -14,11 +14,11 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,limi
 
 %% Print
     if c == 0.25
-        fprintf('Simplex degenerated type: %s \n','Edge degenrated')
+        fprintf('Simplex degenerated type: %s \n','Edge degenerated')
     elseif c == 0.75
-        fprintf('Simplex degenerated type: %s \n','Volume degenrated')
+        fprintf('Simplex degenerated type: %s \n','Volume degenerated')
     elseif c == 0.5
-        fprintf('Simplex degenerated type: %s \n','Both edge and volume degenrated')
+        fprintf('Simplex degenerated type: %s \n','Both edge and volume degenerated')
     end
     [simplex_volume,simplex_perimeter] = simplex_geo_quantities(PD(SimplexState(1:N+1),1:N));
     fprintf('   Simplex volume :    %e \n',simplex_volume)

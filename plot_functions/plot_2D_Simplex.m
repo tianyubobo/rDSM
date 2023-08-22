@@ -11,7 +11,7 @@ function plot_2D_simplex(SimplexHistory,PointsDatabase,Step)
 % --- Dimension
     N = size(PointsDatabase,2)-4; 
     % --- rDSM parameters
-    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters(N);
+    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters;
 % --- Plot parameters
     MS = 60; % Marker size
 

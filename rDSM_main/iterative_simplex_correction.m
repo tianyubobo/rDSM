@@ -15,7 +15,7 @@ function [SimplexState,PD]=iterative_simplex_correction(SimplexState,PD,func,lim
 
 %% Parameters
     N = size(PD,2)-4; % Dimension
-    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters(N);
+    [~,~,~,~,~,eps_edge,eps_vol] = DSM_parameters;
 
 %% Print
     disp('Simplex is degenerated! Correction...')

@@ -8,13 +8,13 @@
 
 %% Parameters
     func = @test_function_WG;
-    Nparam =64; % /!\ Choose a square number
+    Nparam = 100; % /!\ Choose a square number
     init_conditions = 10*ones(Nparam,1); % Initial PWM
     limits = repmat([0,20],Nparam,1);
-    Nsteps_max = 20;
+    Nsteps_max = 1000;
 
 %% Optimization process
-    [p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max,Nparam);
+    [p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max);
 
 %% Plot solution
     figure

@@ -83,7 +83,8 @@ function plot_WG(p_sol)
     title('Controlled map','Interpreter','latex')
 
     legend(PP,{'Measurement points','Actuation points'},'Position',[0.80,0.50,0.09,0.04])
-%% comparision and analysis
+    
+%% comparison and analysis
     subplot(2,3,6)
     plot(Z(:),'bo-')
     hold on

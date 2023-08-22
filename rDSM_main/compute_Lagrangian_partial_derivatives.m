@@ -11,6 +11,8 @@ function Lag_part_derivatives = compute_Lagrangian_partial_derivatives(SimplexCo
     % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
     % CC-BY-SA
 
+fprintf('Computing Lagrangian derivatives ... ')    
+
 %% Parameters
     N = size(SimplexCoordinates,2);
     s = sym('s',[1,N]); % Symbolic variables: coordinates of the worst point
@@ -43,4 +45,5 @@ function Lag_part_derivatives = compute_Lagrangian_partial_derivatives(SimplexCo
     % --- Partial derivatives in L_mult (Lagrage multiplier)
     Lag_part_derivatives = [Lag_part_derivatives,diff(L, L_mult)];
 
+fprintf('Done! \n')    
 end

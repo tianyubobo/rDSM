@@ -1,4 +1,4 @@
-function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max,N)
+function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max)
     % This function is the main one for the rDSM algorithm
     % Note that when a point goes outside the domain, no evaluation is
     % performed and an infinite cost is automatically associated to this
@@ -13,7 +13,7 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max,N)
     % CC-BY-SA
 
 %% rDSM parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters(N);
+    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
 
 %% Initialization
     % Reshape input

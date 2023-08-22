@@ -32,3 +32,7 @@ function write_output_files(SH,PD)
 %% Close the output files 
         fclose(fPD);
         fclose(fSH);
+
+%% Save ASCII format
+    save('Output\PointsDatabase.dat','PD','-ascii')
+    save('Output\SimplexHistory.dat','SH','-ascii')
