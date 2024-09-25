@@ -8,8 +8,8 @@ function [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters_N(N)
 
 %% Parameters
     % --- Initialization parameter
-    %init_coeff = 0.05;  % Percentage of domain range for initial shift
-    init_coeff = 0.1; %Larger
+    init_coeff = 0.05;  % Percentage of domain range for initial shift
+    % init_coeff = 0.1; %Larger
     % --- Downhill simplex method parameters
 %     alph = 1;           % Reflexion parameter
 %     gamm = 2;           % Expansion parameter
@@ -17,7 +17,7 @@ function [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters_N(N)
 %     sigm = 0.5;         % Shrink parameter
     
     % --- Nelder-Mead method parameters from 
-    % Gao, F., Han, L., 2012. Comput Optim Appl 51, 259¨C277. 
+    % Gao, F., Han, L., 2012. Comput Optim Appl 51, 259ï¿½C277. 
     % https://doi.org/10.1007/s10589-010-9329-3
     % N = 36; % dimension
     alph = 1;           % Reflexion parameter
