@@ -5,7 +5,11 @@
 
     % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % CC-BY-SA
-
+%% Add pathes
+    addpath(genpath('test_functions'));
+    addpath(genpath('rDSM_main'));
+    addpath(genpath('plot_functions'));
+    addpath(genpath('Output'));
 %% Parameters
     func = @test_function;
     init_conditions = [-0.75,0.35];
