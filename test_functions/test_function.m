@@ -1,4 +1,4 @@
-function val = test_function_3(x,y)
+function val = test_function(x,y)
     % This function is a test case for the DSME algorithm.
 
     % Guy Y. Cornejo Maceda, 2023/05/10

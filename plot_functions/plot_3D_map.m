@@ -33,12 +33,7 @@ z = linspace(Z1,Z2,Nz);
 
 %% Evalute the function on the grid
     val = func(X,Y,Z); 
-    val_min= min(min(min(val)));% By WTY
-    val_max = max(max(max(val)));% By WTY
-        % WTY: Using this for Matlab R2018b and newer version is better, but I am
-    % using R2018a...
-    % val_min = min(val,[],'all');
-    % val_max = max(val,[],'all');
+    
 %% Plot
     % --- Define levels
     iso_levels = 0:0.2:1;

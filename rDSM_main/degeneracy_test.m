@@ -11,20 +11,7 @@ function [c,edge_ratio,volume_ratio] = degeneracy_test(SimplexState,PD,eps_edge,
     N = size(PD,2)-4; % Dimension
 
 %% Degeneracy test
-    % *** The degeneracy of the simplex is characerized.
-
-    % --- Original test by Bernd and Guy
-    % *** Compare the min and the max distance of one point to the centroid
-    % *** of all points -> Not sufficient.
-%     % --- Compute centroid of all the simplex points, called center.
-%     SimplexCoord = PD(SimplexState(1:N+1),1:N);
-%     center = mean(SimplexCoord,1);
-%     % --- Compute closest and furthest points from the center
-%     distances2center = sqrt(sum((SimplexCoord-center).^2,2));
-%     dmin = min(distances2center);
-%     dmax = min(distances2center);
-%     if dmin>=0.1*dmax, return,end
-
+ 
     % --- Luersen & Le Riche, C&S, 2004
     % *** Build edge matrix
         edge_matrix = PD(SimplexState(2:N+1),1:N)-PD(SimplexState(1),1:N);

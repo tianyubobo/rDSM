@@ -25,18 +25,13 @@ function plot_rDSM_learning(PointsDatabase)
 
 %% Plot
 PP(1) = scatter(1:NEval,PointsDatabase(:,N+2),MS,"yellow","filled","o","MarkerEdgeColor","black");
-hold on
-PP(2) = scatter(idx_bad,1.2*max_cost+0*idx_bad,MS,"red","filled","^","MarkerEdgeColor","black");
 hold off
-ylim([min([0,min_cost]),1.2*max_cost]) % by WTY
-
-xlabel('\# Evaluations','Interpreter','latex')
-ylabel('Cost','Interpreter','latex')
-
+ylim([min([0,min_cost]),1.2*max_cost]) 
+xlabel('Evaluation','Interpreter','latex')
+ylabel('$J$','Interpreter','latex')
 % --- Cosmetic and shape
 grid off
 box on
 grid on
 ax=axis;
 set(gca,'DataAspectRatio',[1/(ax(4)-ax(3)),1/(ax(2)-ax(1)),1])
-legend(PP,{'Evaluated','Cost $> 10^3$'},'Interpreter','latex','Location','northeast')

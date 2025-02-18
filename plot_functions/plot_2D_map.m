@@ -28,19 +28,13 @@ y = linspace(Y1,Y2,Ny);
 
 %% Evalute the function on the grid
     val = func(X,Y);
-    val_min= min(min(val));% By WTY
-    val_max = max(max(val));% By WTY
-    % WTY: Using this for Matlab R2018b and newer version is better, but I am
-    % using R2018a...
-    % val_min = min(val,[],'all');
-    % val_max = max(val,[],'all');
 %% Plot
 imagesc(limits(1,:),limits(2,:),val);
 set(gca,'YDir','normal')
 
 % --- Tick and labels
-xlabel('$p_1$','Interpreter','latex')
-ylabel('$p_2$','Interpreter','latex')
+xlabel('$x_1$','Interpreter','latex')
+ylabel('$x_2$','Interpreter','latex')
 xticks();
 yticks();
 xticklabels('')
@@ -49,7 +43,6 @@ yticklabels('')
 % --- colorbar
 colormap(flip(gray(64)))
 caxis([0,1])
-% caxis([1.2*val_min,1.2*val_max])% By WTY
 colorbar
 
 % --- Cosmetic and shape
@@ -58,6 +51,4 @@ grid off
 box on
 ax = axis;
 set(gca,'DataAspectRatio',[1/(ax(4)-ax(3)),1/(ax(2)-ax(1)),1])
-%set(gca,'TickDir','none')%WTY: none is not available, use
-%'in'|'out'|'both'instead
 set(gca,'TickDir','out')

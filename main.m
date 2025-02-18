@@ -1,5 +1,5 @@
-    % This script launches an optimization process for the DSM/DSME
-    % algorithm.
+    % This script launches an optimization process for the DSM algorithm.
+    % This script is used to validate the DSM code.
 
     % Guy Y. Cornejo Maceda, 2023/05/10
 
@@ -7,28 +7,24 @@
     % CC-BY-SA
 
 %% Parameters
-    func = @test_function_1;
+    func = @test_function;
     init_conditions = [-0.75,0.35];
     limits = [-1,1;-1,1];
-    Nsteps_max = 30;
+    Nsteps_max = 90;
+    N = 2;
 
 %% Optimization process
-    [p_sol,SimplexHistory,PointsDatabase] = DSM(init_conditions,limits,func,Nsteps_max);
+    [p_sol,SimplexHistory,PointsDatabase] = rDSM(init_conditions,limits,func,Nsteps_max,N);
 
-%% Plot solution - 2D
+%% Plot solution
     figure
-    subplot(1,3,1)
-    % --- Plot background
-    plot_2D_map(limits,func);
-    % --- Plot DSME learning process
-    plot_2D_DSME(SimplexHistory,PointsDatabase)
-    subplot(1,3,2)
-    plot_DSME_learning(PointsDatabase)
-    subplot(1,3,3)
-    plot_2D_Simplex(SimplexHistory,PointsDatabase)
+    subplot(1,2,1)
+    % --- Plot background and simplices history
+        plot_func_map(limits,func);
+        plot_rDSM_simplices(SimplexHistory,PointsDatabase)
+    subplot(1,2,2)
+    % --- Plot learning curve
+        plot_rDSM_learning(PointsDatabase)
     % --- Position
-    set(gcf,'Position',[20,521,1845,420])
-
-%% Notes
-% Improvements to be done:
-% (1) Include the limits in the initialization.
+    set(gcf,'Position',[20,521,1245,420])
+    set(gcf,'color','white');
