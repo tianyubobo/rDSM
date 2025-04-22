@@ -1,4 +1,4 @@
-function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
+function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max,N)
     % This function is the main one for the classical DSM algorithm
     % Note that when a point goes outside the domain, no evaluation is
     % performed and an infinite cost is automatically associated to this
@@ -14,7 +14,7 @@ function [PSOL,SH,PD] = DSM(init_conditions,limits,func,Nsteps_max)
     % CC-BY-SA
 
 %% DSME parameters
-    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters;
+    [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters_N(N);
 
 %% Initialization
     % Reshape input
