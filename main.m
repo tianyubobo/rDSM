@@ -11,10 +11,12 @@
     addpath(genpath('plot_functions'));
     addpath(genpath('Output'));
 %% Parameters
+    rng(1)
     func = @test_function;
+    %func = @test_function_noisy;
     init_conditions = [-0.75,0.35];
     limits = [-1,1;-1,1];
-    Nsteps_max = 90;
+    Nsteps_max = 30;
     N = 2;
 
 %% Optimization process

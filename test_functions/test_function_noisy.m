@@ -1,4 +1,4 @@
-function val = test_function(x,y)
+function val = test_function_noisy(x,y)
     % This function is a test case for the DSME algorithm.
 
     % Guy Y. Cornejo Maceda, 2023/05/10
@@ -19,7 +19,8 @@ end
 
 %% Evaluation
 val = -sqrt(2)*(x-y)/(4*sqrt(2))+0.5;
-val = val + (x<0).*(y<0) * 10^3;
-val = val + (y<-1) * 10^3;
-val = val + (x>1) * 10^3;
-
+%val = val + (x<0).*(y<0) * 10^3;
+%val = val + (y<-1) * 10^3;
+%val = val + (x>1) * 10^3;
+%% Add noise
+val = val + 0.02*rand(1);
