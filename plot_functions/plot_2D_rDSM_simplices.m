@@ -21,7 +21,11 @@ hold on
         SimplexCoord = PointsDatabase(SimplexPointIndices,1:N);
         % --- Simplex type
         SimplexType = SimplexHistory(p,N+3);
-        c = 4*rem(SimplexType,1);
+        if SimplexType == inf
+            c = 1;
+        else
+            c = 4*rem(SimplexType,1);
+        end
         if logical(c)
             if SimplexType<1
                 simplex_line_type = 'b--';
