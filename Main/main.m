@@ -6,9 +6,10 @@
     % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % CC-BY-SA
 %% Add pathes
-    addpath(genpath('test_functions'));
-    addpath(genpath('rDSM_main'));
-    addpath(genpath('plot_functions'));
+    addpath(genpath('Initialization'));
+    addpath(genpath('ObjectiveFunction'));
+    addpath(genpath('Visualization'));
+    addpath(genpath('Optimizer'));
     addpath(genpath('Output'));
 %% Parameters
     rng(6)

@@ -1,0 +1,260 @@
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+-0.6500	0.3500	0.7566	2.0000	
+ Reevaluated points 
+-0.6500	0.3500	0.7584	8.0000	
+ New points 
+-0.6500	0.3500	0.7575	9.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+-0.6000	0.1500	0.6897	5.0000	
+ Reevaluated points 
+-0.6000	0.1500	0.6963	12.0000	
+ New points 
+-0.6000	0.1500	0.6930	13.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+-0.3750	0.0500	0.6168	7.0000	
+ Reevaluated points 
+-0.3750	0.0500	0.6178	16.0000	
+ New points 
+-0.3750	0.0500	0.6173	17.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+-0.1625	-0.4000	0.4531	11.0000	
+ Reevaluated points 
+-0.1625	-0.4000	0.4604	20.0000	
+ New points 
+-0.1625	-0.4000	0.4568	21.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.3938	-0.8250	0.2057	15.0000	
+ Reevaluated points 
+0.3938	-0.8250	0.2036	24.0000	
+ New points 
+0.3938	-0.8250	0.2046	25.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.3609	-0.9437	0.1902	22.0000	
+ Reevaluated points 
+0.3609	-0.9437	0.1749	30.0000	
+ New points 
+0.3609	-0.9437	0.1826	31.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.3938	-0.8250	0.2057	15.0000	
+0.3938	-0.8250	0.2036	24.0000	
+0.3938	-0.8250	0.2046	25.0000	
+ Reevaluated points 
+0.3938	-0.8250	0.2097	32.0000	
+ New points 
+0.3938	-0.8250	0.2059	33.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.3609	-0.9437	0.1902	22.0000	
+0.3609	-0.9437	0.1749	30.0000	
+0.3609	-0.9437	0.1826	31.0000	
+ Reevaluated points 
+0.3609	-0.9437	0.1880	38.0000	
+ New points 
+0.3609	-0.9437	0.1839	39.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.3938	-0.8250	0.2057	15.0000	
+0.3938	-0.8250	0.2036	24.0000	
+0.3938	-0.8250	0.2046	25.0000	
+0.3938	-0.8250	0.2097	32.0000	
+0.3938	-0.8250	0.2077	33.0000	
+ Reevaluated points 
+0.3938	-0.8250	0.2061	40.0000	
+ New points 
+0.3938	-0.8250	0.2062	41.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.4448	-0.9449	0.1673	36.0000	
+ Reevaluated points 
+0.4448	-0.9449	0.1606	45.0000	
+ New points 
+0.4448	-0.9449	0.1640	46.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.4448	-0.9449	0.1673	36.0000	
+0.4448	-0.9449	0.1606	45.0000	
+0.4448	-0.9449	0.1640	46.0000	
+ Reevaluated points 
+0.4448	-0.9449	0.1577	51.0000	
+ New points 
+0.4448	-0.9449	0.1624	52.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.5939	-0.9768	0.1217	48.0000	
+ Reevaluated points 
+0.5939	-0.9768	0.1193	54.0000	
+ New points 
+0.5939	-0.9768	0.1205	55.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.5939	-0.9768	0.1217	48.0000	
+0.5939	-0.9768	0.1193	54.0000	
+0.5939	-0.9768	0.1205	55.0000	
+ Reevaluated points 
+0.5939	-0.9768	0.1144	60.0000	
+ New points 
+0.5939	-0.9768	0.1190	61.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.5379	-0.9984	0.1293	53.0000	
+ Reevaluated points 
+0.5379	-0.9984	0.1210	62.0000	
+ New points 
+0.5379	-0.9984	0.1252	63.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.5939	-0.9768	0.1217	48.0000	
+0.5939	-0.9768	0.1193	54.0000	
+0.5939	-0.9768	0.1205	55.0000	
+0.5939	-0.9768	0.1144	60.0000	
+0.5939	-0.9768	0.1180	61.0000	
+ Reevaluated points 
+0.5939	-0.9768	0.1154	68.0000	
+ New points 
+0.5939	-0.9768	0.1182	69.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.5962	-0.9983	0.1094	64.0000	
+ Reevaluated points 
+0.5962	-0.9983	0.1089	72.0000	
+ New points 
+0.5962	-0.9983	0.1091	73.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.7093	-0.9658	0.0957	67.0000	
+ Reevaluated points 
+0.7093	-0.9658	0.0829	76.0000	
+ New points 
+0.7093	-0.9658	0.0893	77.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.7704	-0.9925	0.0683	71.0000	
+ Reevaluated points 
+0.7704	-0.9925	0.0747	80.0000	
+ New points 
+0.7704	-0.9925	0.0715	81.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.8835	-0.9601	0.0533	74.0000	
+ Reevaluated points 
+0.8835	-0.9601	0.0448	84.0000	
+ New points 
+0.8835	-0.9601	0.0490	85.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9446	-0.9868	0.0251	78.0000	
+ Reevaluated points 
+0.9446	-0.9868	0.0266	88.0000	
+ New points 
+0.9446	-0.9868	0.0258	89.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9858	-0.9639	0.0163	86.0000	
+ Reevaluated points 
+0.9858	-0.9639	0.0294	96.0000	
+ New points 
+0.9858	-0.9639	0.0229	97.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9652	-0.9754	0.0186	94.0000	
+ Reevaluated points 
+0.9652	-0.9754	0.0272	103.0000	
+ New points 
+0.9652	-0.9754	0.0229	104.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9755	-0.9697	0.0173	102.0000	
+ Reevaluated points 
+0.9755	-0.9697	0.0278	111.0000	
+ New points 
+0.9755	-0.9697	0.0225	112.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9704	-0.9706	0.0175	110.0000	
+ Reevaluated points 
+0.9704	-0.9706	0.0177	117.0000	
+ New points 
+0.9704	-0.9706	0.0176	118.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9756	-0.9678	0.0153	113.0000	
+ Reevaluated points 
+0.9756	-0.9678	0.0271	121.0000	
+ New points 
+0.9756	-0.9678	0.0212	122.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9704	-0.9706	0.0175	110.0000	
+0.9704	-0.9706	0.0177	117.0000	
+0.9704	-0.9706	0.0176	118.0000	
+ Reevaluated points 
+0.9704	-0.9706	0.0339	125.0000	
+ New points 
+0.9704	-0.9706	0.0217	126.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9736	-0.9693	0.0175	120.0000	
+ Reevaluated points 
+0.9736	-0.9693	0.0245	128.0000	
+ New points 
+0.9736	-0.9693	0.0210	129.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9702	-0.9711	0.0155	124.0000	
+ Reevaluated points 
+0.9702	-0.9711	0.0170	135.0000	
+ New points 
+0.9702	-0.9711	0.0163	136.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9702	-0.9711	0.0155	124.0000	
+0.9702	-0.9711	0.0170	135.0000	
+0.9702	-0.9711	0.0163	136.0000	
+ Reevaluated points 
+0.9702	-0.9711	0.0210	141.0000	
+ New points 
+0.9702	-0.9711	0.0174	142.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9699	-0.9709	0.0155	140.0000	
+ Reevaluated points 
+0.9699	-0.9709	0.0173	149.0000	
+ New points 
+0.9699	-0.9709	0.0164	150.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9699	-0.9709	0.0155	140.0000	
+0.9699	-0.9709	0.0173	149.0000	
+0.9699	-0.9709	0.0164	150.0000	
+ Reevaluated points 
+0.9699	-0.9709	0.0304	155.0000	
+ New points 
+0.9699	-0.9709	0.0199	156.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9702	-0.9708	0.0201	152.0000	
+ Reevaluated points 
+0.9702	-0.9708	0.0260	159.0000	
+ New points 
+0.9702	-0.9708	0.0230	160.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9701	-0.9709	0.0156	158.0000	
+ Reevaluated points 
+0.9701	-0.9709	0.0156	166.0000	
+ New points 
+0.9701	-0.9709	0.0156	167.0000	
+Reevaluation points: p_1 | ... | p_N | cost| ID 
+ Pre-reevaluation points 
+0.9701	-0.9709	0.0150	169.0000	
+ Reevaluated points 
+0.9701	-0.9709	0.0274	178.0000	
+ New points 
+0.9701	-0.9709	0.0212	179.0000	

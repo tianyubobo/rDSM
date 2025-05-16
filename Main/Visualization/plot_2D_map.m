@@ -45,6 +45,8 @@ colormap(flip(gray(64)))
 caxis([0,1])
 colorbar
 
+ylabel(colorbar,'$J$','Interpreter','latex')
+
 % --- Cosmetic and shape
 axis tight
 grid off

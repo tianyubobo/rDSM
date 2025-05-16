@@ -29,6 +29,7 @@ hold off
 ylim([min([0,min_cost]),1.2*max_cost]) 
 xlabel('Evaluation','Interpreter','latex')
 ylabel('$J$','Interpreter','latex')
+xlim([0,200])
 % --- Cosmetic and shape
 grid off
 box on
