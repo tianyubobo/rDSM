@@ -1,11 +1,7 @@
 function [SimplexState,PD] = reevaluation(SimplexState,PD,func)
     % This function reevaluates points in the simplex that stayed too long.
     % This step avoid keeping false good points.
-        
-    % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (email address)
-    % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

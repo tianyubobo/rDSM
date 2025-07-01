@@ -1,11 +1,7 @@
 function [SimplexState,PD,c,IDr] = contraction(SimplexState,PD,func,phi,IDr)
-    % This function is the contraction step for the DSME algorithm.
+    % This function is the contraction step for the rDSM algorithm.
     % Inside and outside contraction are considered.
 
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

@@ -1,6 +1,6 @@
 function c = negligeable_improvement(PD,SimplexState,limits,abs_error)
 % *** If the best point and its closest neighbor are too close
-% *** (d/D<1e-6, D diameter domain), break the for loop.
+
 
 %% Parameter 
     c = 0;

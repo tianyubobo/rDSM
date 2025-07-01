@@ -1,10 +1,5 @@
 function plot_rDSM_learning(PointsDatabase)
     % This function plots the learning process for a DSME optimization.
-        
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
     % --- Plot parameters

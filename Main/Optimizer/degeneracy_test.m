@@ -1,11 +1,6 @@
 function [c,edge_ratio,volume_ratio] = degeneracy_test(SimplexState,PD,eps_edge,eps_vol)
     % This function tests if the simplex is denerated or not.
-    % This function is called in plot_2D_Simplex, DSM and DSME.
-
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % This function is called in plot_2D_Simplex, DSM and rDSM.
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

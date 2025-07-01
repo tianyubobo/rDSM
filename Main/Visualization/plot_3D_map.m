@@ -1,11 +1,7 @@
 function plot_3D_map(limits,func)
     % This function plots the 3D of a function.
     % This is used to visualize the optimization process of an algorithm.
-        
-    % Guy Y. Cornejo Maceda, 2023/05/10
 
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
 % Number of points in x and y directions.

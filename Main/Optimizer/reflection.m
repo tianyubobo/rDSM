@@ -1,10 +1,5 @@
 function [SimplexState,PD,c,IDr] = reflection(SimplexState,PD,func,alph,limits)
-    % This function is the reflection step for the DSME algorithm.
-
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % This function is the reflection step for the rDSM algorithm.
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

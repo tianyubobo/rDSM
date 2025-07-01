@@ -15,10 +15,6 @@ function [SH,PD,N] = DSM_initialization(init_conditions,init_coeff,limits,func)
     % +0.5 :Volume degenerated
     % +0.75:Edge and volume degenerated
     
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
     N = numel(init_conditions); % Dimension

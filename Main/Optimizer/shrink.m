@@ -1,10 +1,6 @@
 function [SimplexState,PD,c] = shrink(SimplexState,PD,func,sigm)
-    % This function is the shrink step for the DSME algorithm.
+    % This function is the shrink step for the rDSM algorithm.
 
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

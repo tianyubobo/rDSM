@@ -1,7 +1,6 @@
 function [PD, SimplexState] = ReevaluMean(PD,SimplexState,N,k)
 %Take the mean value of the reevaluated points.
-    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
-    % CC-BY-SA
+
 %% Select the points and calculate the mean value    
     % --- The reevaluation point
     %[Point Coordinate value, Cost,ID];

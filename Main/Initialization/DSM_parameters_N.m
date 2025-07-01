@@ -1,11 +1,6 @@
 function [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters_N(N)
     % This function initialize the parameters for the rDSM algorithm.
     
-    % WANG Tianyu, 2023/05/10
-
-    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
-    % CC-BY-SA
-
 %% Parameters
     % --- Initialization parameter
     init_coeff = 0.05;  % Percentage of domain range for initial shift

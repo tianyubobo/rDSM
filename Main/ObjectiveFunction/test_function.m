@@ -1,10 +1,5 @@
 function val = test_function(x,y)
-    % This function is a test case for the DSME algorithm.
-
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % This function is a test case for the rDSM algorithm.
 
 %% Test
 if nargin == 1

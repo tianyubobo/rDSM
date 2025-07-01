@@ -5,11 +5,6 @@ function Lag_part_derivatives = compute_Lagrangian_partial_derivatives(SimplexCo
     % Last row are the cooridnates of the worst point.
     % Output:
     % A vector of symbolic expressions being the partial derivatives.
-        
-    % WANG Tianyu, 2023/06/26
-
-    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
-    % CC-BY-SA
 
 fprintf('Computing Lagrangian derivatives ... ')    
 

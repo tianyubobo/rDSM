@@ -1,11 +1,6 @@
 function plot_2D_simplex(SimplexHistory,PointsDatabase,Step)
     % This function plots the last simplex
     % This is used to visualize the optimization process of rDSM.
-        
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
 % --- Dimension

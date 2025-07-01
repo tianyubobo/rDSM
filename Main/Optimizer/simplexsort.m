@@ -2,11 +2,6 @@ function SimplexState = simplexsort(SimplexState,PD)
     % This function sorts the indices of the simplex points based on their
     % cost.
 
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
-
 %% Parameters
     N = size(PD,2)-4; % Dimension
     

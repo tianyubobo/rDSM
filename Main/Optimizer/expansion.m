@@ -1,10 +1,6 @@
 function [SimplexState,PD,c,IDr] = expansion(SimplexState,PD,func,gamm,IDr,limits)
-    % This function is the expansion step for the DSME algorithm.
+    % This function is the expansion step for the rDSM algorithm.
 
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

@@ -7,11 +7,7 @@ function [SimplexState,PD]=iterative_simplex_correction(SimplexState,PD,func,lim
     % moved. And so on.
     % In the case where the new point is outside the domain, this new point
     % is ignored and the original point is kept.
-        
-    % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
-    % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension

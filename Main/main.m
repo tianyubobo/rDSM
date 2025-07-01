@@ -1,10 +1,7 @@
     % This script launches an optimization process for the DSM algorithm.
     % This script is used to validate the DSM code.
 
-    % Guy Y. Cornejo Maceda, 2023/05/10
 
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
 %% Add pathes
     addpath(genpath('Initialization'));
     addpath(genpath('ObjectiveFunction'));
@@ -13,8 +10,8 @@
     addpath(genpath('Output'));
 %% Parameters
     rng(6)
-    %func = @test_function;
-    func = @test_function_noisy;
+    func = @test_function;
+    %func = @test_function_noisy;
     init_conditions = [-0.75,0.35];
     limits = [-1,1;-1,1];
     Nsteps_max = 50;

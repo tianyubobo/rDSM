@@ -3,14 +3,7 @@ function [PSOL,SH,PD] = rDSM(init_conditions,limits,func,Nsteps_max,N)
     % Note that when a point goes outside the domain, no evaluation is
     % performed and an infinite cost is automatically associated to this
     % point.
-    % This version:
-    % - deals with the case when the algorithm goes beyond the limits. It
-    % gives a cost of INF. See REFLECTION, and EXPANSION.
-
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+ 
 
 %% rDSM parameters
     [alph,gamm,phi,sigm,init_coeff,eps_edge,eps_vol] = DSM_parameters_N(N);

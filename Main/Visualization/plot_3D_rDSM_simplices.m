@@ -1,11 +1,6 @@
 function plot_3D_rDSM_simplices(SimplexHistory,PointsDatabase)
     % This function plots the simplices.
-    % This is used to visualize the optimization process of DSME.
-        
-    % Guy Y. Cornejo Maceda, 2023/05/10
-
-    % Copyright: 2023 Guy Y. Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % This is used to visualize the optimization process of rDSM.
 
 %% Plot parameters
     MS = 35; % Marker size

@@ -1,8 +1,6 @@
 function [allx,ally,r,iter]=mulNewton(F,X0,eps)
   % This function uses Newton–Raphson method to solve the equtions
   % Solve F = fun(x) = 0
-  % WTY: This is found online and slightly modified 
-  % https://zhuanlan.zhihu.com/p/63103354
   % Input: 
   % F: The equation function to be solved 
   % x0: The initial point,(lamda, s1,s2,...,sN)
@@ -11,7 +9,7 @@ function [allx,ally,r,iter]=mulNewton(F,X0,eps)
   % allx: matrix, history solution of the unknown variable
   % ally: matrix, history solution of F
   % r: vector, the final solution of the unknown variable
-  % iter:integer, the number of iterations
+  % iter: integer, the number of iterations
    
 fprintf('Solving the problem with Newton-Raphson s method ... ')
 

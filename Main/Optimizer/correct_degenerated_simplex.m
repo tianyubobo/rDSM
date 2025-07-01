@@ -2,11 +2,7 @@ function [SimplexState,PD]=correct_degenerated_simplex(SimplexState,PD,func,limi
     % This function corrects the degeneracy of the simplex
     % Replace the worst performing point by the point that maximizes
     % "volume" and keeps the same "diameter".
-        
-    % WANG Tianyu, 2023/06/26
 
-    % Copyright: 2023 WANG Tianyu (wangtianyu@stu.hit.edu.cn)
-    % CC-BY-SA
 
 %% Parameters
     N = size(PD,2)-4; % Dimension
